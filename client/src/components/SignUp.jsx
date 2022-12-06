@@ -1,5 +1,5 @@
 import { useState } from 'react'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function SignUp({ updateUser }) {
     const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ function SignUp({ updateUser }) {
         avatar_img:''
     })
     const [errors, setErrors] = useState([])
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const { username, email, password, first_name, last_name, location, age, avatar_img } = formData
 
@@ -40,7 +40,7 @@ function SignUp({ updateUser }) {
                 if (res.ok) {
                     res.json().then(user => {
                         updateUser(user)
-                        //navigate(`/users/${user.id}`)
+                        navigate(`/users/${user.id}`)
                     })
                 } else {
                     res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -55,6 +55,7 @@ function SignUp({ updateUser }) {
 
     return (
         <>
+        <h2>New User Sign Up</h2>
             <form onSubmit={onSubmit}>
                 <label>
                     Username

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-//import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function LogIn({ updateUser }) {
     const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ function LogIn({ updateUser }) {
         password: ''
     })
     const [errors, setErrors] = useState([])
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const { username, email, password } = formData
 
@@ -26,14 +26,15 @@ function LogIn({ updateUser }) {
             },
             body: JSON.stringify(user)
         })
+            .then(console.log(user))
             .then((res) => {
                 if (res.ok) {
                     res.json().then(user => {
                         updateUser(user)
-                        //navigate(`/users/${user.id}`)
+                        navigate(`/`)
                     })
                 } else {
-                    res.json().then(json => setErrors(json.errors))
+                    console.log(res)
                 }
             })
     }
@@ -58,7 +59,7 @@ function LogIn({ updateUser }) {
                     Password
                 </label>
                 <input type='text' name='password' value={password} onChange={handleChange} />
-                <button type='submit' value='Log In'/>
+                <input type='submit' value='Log In'/>
             </form>
             { errors ? <div>{errors}</div> : null }
         </>

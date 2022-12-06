@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import LogIn from './components/LogIn'
 import './App.css'
 import Home from './components/Home'
@@ -7,6 +8,7 @@ function App() {
   const [places, setPlaces] = useState([])
   const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState(false)
+  const [contents, setContents] = useState([])
 
   useEffect(() => {
     fetch('/authorized_user')
@@ -31,22 +33,32 @@ function App() {
         }
       })
   }
-  // useEffect(() => {
-  //   fetch('/places')
-  //   .then((r) => r.json())
-  //   .then(setPlaces)
-  // }, [])
 
   const updateUser = (user) => setCurrentUser(user)
+
+  const addPlace = (place) => setPlaces(current => [...current, place])
+
+  const updatePlace = (updatedPlace) => setPlaces(current => {
+    return current.map(place => {
+      if(place.id === updatedPlace.id){
+        return updatedPlace
+      } else {
+        return place
+      }
+    })
+  })
+
+  const deletePlace = (id) => setPlaces(current => current.filter(place => place.id !== id))
 
   if (errors) return <h1>{errors}</h1>
 
   return (
-    <>
-      <LogIn updateUser={updateUser} />
-      <div>{currentUser}</div>
-      <Home places={places}/>
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home places={places}/>} />
+        <Route path='/login' element={<LogIn updateUser={updateUser} />} />
+      </Routes>
+    </Router>
   )
 }
 

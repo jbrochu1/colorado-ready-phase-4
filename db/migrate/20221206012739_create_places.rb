@@ -8,6 +8,7 @@ class CreatePlaces < ActiveRecord::Migration[7.0]
       t.string :hours
       t.integer :elevation
       t.boolean :kid_friendly
+      t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
     end

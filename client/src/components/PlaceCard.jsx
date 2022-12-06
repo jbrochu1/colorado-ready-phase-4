@@ -10,6 +10,16 @@ function PlaceCard({ place }) {
             <p>{hours}</p>
             <p>{elevation}</p>
             {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
+            {place.contents.map(content => {
+                return(
+                    <ul>
+                        <li>
+                            <p>{content.comment}</p>
+                            <p>{content.rating}</p>
+                        </li>
+                    </ul>
+                )
+            })}
         </div>
     )
 }

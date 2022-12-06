@@ -1,3 +1,4 @@
 class ContentSerializer < ActiveModel::Serializer
-  attributes :comment, :rating
+  attributes :place_id, :user_id, :comment, :rating
+  has_many :places
 end

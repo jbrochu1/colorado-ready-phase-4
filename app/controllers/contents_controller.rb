@@ -9,6 +9,11 @@ class ContentsController < ApplicationController
         render json: @content, status: :ok
     end
 
+    def create
+        @content = Content.create!(content_params)
+        render json: @content, status: :created
+    end
+
     def update
         @content.update!(content_params)
         render json: @content, status: :accepted
