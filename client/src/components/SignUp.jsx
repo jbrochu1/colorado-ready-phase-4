@@ -5,19 +5,29 @@ function SignUp({ updateUser }) {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        first_name: '',
+        last_name: '',
+        location:'',
+        age:'',
+        avatar_img:''
     })
     const [errors, setErrors] = useState([])
     //const navigate = useNavigate()
 
-    const { username, email, password } = formData
+    const { username, email, password, first_name, last_name, location, age, avatar_img } = formData
 
     function onSubmit(e) {
         e.preventDefault()
         const user = {
             username,
             email,
-            password
+            password,
+            first_name,
+            last_name,
+            location,
+            age,
+            avatar_img
         }
         fetch('/login', {
             method: 'POST',
@@ -58,6 +68,26 @@ function SignUp({ updateUser }) {
                     Password
                 </label>
                 <input type='text' name='password' value={password} onChange={handleChange} />
+                <label>
+                    First Name
+                </label>
+                <input type='text' name='first_name' value={first_name} onChange={handleChange} />
+                <label>
+                    Last Name
+                </label>
+                <input type='text' name='last_name' value={last_name} onChange={handleChange} />
+                <label>
+                    Location (State)
+                </label>
+                <input type='text' name='location' value={location} onChange={handleChange} />
+                <label>
+                    Age
+                </label>
+                <input type='text' name='age' value={age} onChange={handleChange} />
+                <label>
+                    Avatar Image
+                </label>
+                <input type='text' name='avatar_img' value={avatar_img} onChange={handleChange} />
                 <input type='submit' value='Sign Up'/>
             </form>
             { errors ? errors.map(<div>{ e[0] + ': ' + e[1] }</div>) : null }

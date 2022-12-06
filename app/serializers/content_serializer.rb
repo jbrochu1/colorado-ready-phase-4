@@ -1,3 +1,3 @@
 class ContentSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :comment, :rating
 end
