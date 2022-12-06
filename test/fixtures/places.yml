@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  category: MyString
+  image: MyString
+  hours: MyString
+  elevation: 1
+  kid_friendly: false
+
+two:
+  name: MyString
+  address: MyString
+  category: MyString
+  image: MyString
+  hours: MyString
+  elevation: 1
+  kid_friendly: false
