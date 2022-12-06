@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import LogIn from './components/LogIn'
 import './App.css'
+import Home from './components/Home'
 
 function App() {
   const [places, setPlaces] = useState([])
@@ -30,6 +31,11 @@ function App() {
         }
       })
   }
+  // useEffect(() => {
+  //   fetch('/places')
+  //   .then((r) => r.json())
+  //   .then(setPlaces)
+  // }, [])
 
   const updateUser = (user) => setCurrentUser(user)
 
@@ -39,7 +45,7 @@ function App() {
     <>
       <LogIn updateUser={updateUser} />
       <div>{currentUser}</div>
-      <div>{places}</div>
+      <Home places={places}/>
     </>
   )
 }

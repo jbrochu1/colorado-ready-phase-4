@@ -1,3 +1,5 @@
+require 'faker'
+
 puts "Planting seeds...🌱"
 
 User.destroy_all
@@ -14,14 +16,14 @@ puts "Creating users...👨‍💻"
         age: rand(5..80),
         username: Faker::Internet.username(specifier: 5..10),
         avatar_img: Faker::Avatar.image,
-        password: Faker::Internet.passowrd(min_length: 1, max_length: 4)
+        password: Faker::Internet.password(min_length: 2, max_length: 4)
     )
 end 
 
 puts "Creating default places...🗺️"
 
 Place.create(name: "Vail Ski Resort", address: "Vail, Colorado", image: "https://www.uncovercolorado.com/wp-content/uploads/2021/12/vail-terrain-runs-colorado-ski-resort.jpeg", elevation:	8120, hours: "9AM-5PM", kid_friendly: true, category: "Ski Resort")
-Place.create(name: "Beaver Creek Resort", address: "210 Beaver Creek Plaza, Beaver Creek, CO 81620", image: "https://dam-assets.vailresorts.com/is/image/vailresorts/BC_FeaturedContentElement_WinterAerial_600x400?resMode=sharp2&wid=565&fit=constrain,1&dpr=on,1.75", elevation:	8,100, hours: "7AM-6PM", kid_friendly: true, category: "Ski Resort")
+Place.create(name: "Beaver Creek Resort", address: "210 Beaver Creek Plaza, Beaver Creek, CO 81620", image: "https://dam-assets.vailresorts.com/is/image/vailresorts/BC_FeaturedContentElement_WinterAerial_600x400?resMode=sharp2&wid=565&fit=constrain,1&dpr=on,1.75", elevation: 8100, hours: "7AM-6PM", kid_friendly: true, category: "Ski Resort")
 Place.create(name: "Breckenridge Ski Resort", address: "1599 Ski Hill Rd, Breckenridge, CO 80424", image: "https://cdn.ski/MGQzijCEkgVzhCAR.webp:xl", elevation: 9600, hours: "9:30AM-4PM", kid_friendly: true, category: "Ski Resort")
 Place.create(name: "Aspen Snowmass Ski Resort", address: "120 Lower, Carriage Way, Snowmass Village, CO 81615", image: "https://www.snowmagazine.com/images/ski-resorts/usa/snowmass-snowmass.jpg", elevation: 8104, hours: "10AM-5PM", kid_friendly: true, category: "Ski Resort")
 Place.create(name: "Iron Mountain Hot Springs", address: "281 Centennial St, Glenwood Springs, CO 81601", image: "https://i0.wp.com/images.ski.com/media/vr-mr-blog/ironmountain.jpg?w=750", elevation: 5761, hours: "9AM-10PM", kid_friendly: true, category: "Hot Springs")
@@ -37,3 +39,16 @@ Place.create(name: "Aztec Family Raceway", address:	"12400 CO-94, Colorado Sprin
 Place.create(name: "Leadville Motocross Park", address:	"Co Rd 45, Leadville, CO 80461", image: "http://pulpmx.com/app/uploads/2019/07/IMG_3846-1024x683.jpg", elevation: 10000, hours: "10AM-6PM", kid_friendly: true, category: "Motocross")
 Place.create(name: "Bandimere Speedway", address: "3051 S Rooney Rd, Morrison, CO 80465", image: "https://bandimere.com/wp-content/uploads/2020/02/BS-Web-Photo-Sunset-2020-02.jpg", elevation:	5800, hours: "8:30AM-4:30PM", kid_friendly: true, category: "Speedracing")
 Place.create(name: "K1 Speed", address:	"8034 Midway Dr, Littleton, CO 80125", image: "https://www.k1speed.com/wp-content/uploads/2020/06/a-n-d-racing.jpg", elevation:	5351, hours: "10AM-10PM", kid_friendly: true, category: "Speedracing")
+
+puts "Creating content...🚽"
+
+40.times do
+    Content.create(
+        comment: Faker::Lorem.paragraph_by_chars(number: 100, supplemental: false),
+        rating: rand(0..5), 
+        user_id: rand(1..20), 
+        place_id: rand(1..17)
+    )
+end
+
+puts "Grow baby grow! 👨🏻‍🌾"
