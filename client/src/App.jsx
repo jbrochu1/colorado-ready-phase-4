@@ -14,7 +14,7 @@ function App() {
           res.json()
             .then((user) => {
               updateUser(user);
-              fetchPlaces()
+              //fetchPlaces()
             });
         }
       })
