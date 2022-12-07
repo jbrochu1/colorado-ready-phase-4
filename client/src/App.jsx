@@ -12,36 +12,48 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
   const [contents, setContents] = useState([])
 
-  useEffect(() => {
-    fetch('/api/authorized_user')
-      .then((res) => {
-        if (res.ok) {
-          res.json()
-            .then((user) => {
-              updateUser(user);
-              fetchPlaces()
-            });
-        } 
-      })
-  }, [])
-
-  const fetchPlaces = () => {
-    fetch('/api/places')
-      .then((res) => {
-        if (res.ok) {
-          res.json().then(setPlaces)
-        } else {
-          res.json().then(data => setErrors(data.error))
-        }
-      })
-  }
-
+  // USE TO CHECK FOR USER LOGIN
   // useEffect(() => {
-  //   fetch('http://localhost:3000/places')
-  //   .then((response) => response.json())
-  //   .then(places => setPlaces(places))
-  //   .then(console.log(places))
-  // })
+  //   fetch('/api/authorized_user')
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         res.json()
+  //           .then((user) => {
+  //             updateUser(user);
+  //             fetchPlaces() // <-- fetch request for particular data
+  //           });
+  //       } 
+  //     })
+  // }, [])
+
+  // const fetchPlaces = () => {
+  //   fetch('/api/places')
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         res.json().then(setPlaces)
+  //       } else {
+  //         res.json().then(data => setErrors(data.error))
+  //       }
+  //     })
+  // }
+
+  useEffect(() => {
+    fetch('/api/places')
+    .then((res) => {
+      if (res.ok) {
+        res.json()
+        .then(setPlaces)
+        console.log(res)
+      } else {
+        res.json()
+        .then(data => setErrors(data.error))
+        console.log(res)
+      }
+    })
+    // .then((response) => response.json())
+    // .then(places => setPlaces(places))
+    // .then(console.log(places))
+  }, [])
 
   const updateUser = (user) => setCurrentUser(user)
 

@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
 
+    skip_before_action :authorized_user, only: [:index, :show]
+
     before_action :set_place, only: [:show, :update, :destroy]
 
     def index
