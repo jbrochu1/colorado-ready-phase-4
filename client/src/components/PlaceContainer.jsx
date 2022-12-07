@@ -1,17 +1,19 @@
 import PlaceCard from './PlaceCard'
 
-function PlaceContainer({ places }){
+function PlaceContainer({ places }) {
     const placeCard = places.map(place => {
         return (
-            <PlaceCard 
+            <PlaceCard
                 key={place.id}
                 place={place}
             />
         )
     })
-    
-    return(
-        <div>{placeCard}</div>
+
+    return (
+        <div>
+            {placeCard}
+        </div>
     )
 }
 

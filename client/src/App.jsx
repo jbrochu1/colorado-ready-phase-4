@@ -11,7 +11,7 @@ function App() {
   const [contents, setContents] = useState([])
 
   useEffect(() => {
-    fetch('/authorized_user')
+    fetch('/api/authorized_user')
       .then((res) => {
         if (res.ok) {
           res.json()
@@ -24,7 +24,7 @@ function App() {
   }, [])
 
   const fetchPlaces = () => {
-    fetch('/places')
+    fetch('/api/places')
       .then((res) => {
         if (res.ok) {
           res.json().then(setPlaces)
@@ -33,6 +33,13 @@ function App() {
         }
       })
   }
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/places')
+  //   .then((response) => response.json())
+  //   .then(places => setPlaces(places))
+  //   .then(console.log(places))
+  // })
 
   const updateUser = (user) => setCurrentUser(user)
 
