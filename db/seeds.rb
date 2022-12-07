@@ -16,9 +16,12 @@ puts "Creating users...👨‍💻"
         age: rand(5..80),
         username: Faker::Internet.username(specifier: 5..10),
         avatar_img: Faker::Avatar.image,
-        password: Faker::Internet.password(min_length: 2, max_length: 4)
+        password: "12345"
     )
 end 
+
+puts "Creating TEST user...🫥"
+User.create(first_name: "test", last_name: "test", email: "test", location: "test", age: 100, username: "test", avatar_img: "test", password: "1111" )
 
 puts "Creating default places...🗺️"
 

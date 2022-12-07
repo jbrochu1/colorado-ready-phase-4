@@ -19,10 +19,10 @@ function LogIn({ updateUser }) {
             email,
             password
         }
-        fetch('/login', {
+        fetch('api/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(user)
         })
@@ -34,7 +34,8 @@ function LogIn({ updateUser }) {
                         navigate(`/`)
                     })
                 } else {
-                    console.log(res)
+                    res.json()
+                    .then(json => setErrors(json.errors))
                 }
             })
     }
@@ -46,6 +47,7 @@ function LogIn({ updateUser }) {
 
     return (
         <>
+        {}
             <form onSubmit={onSubmit}>
                 <label>
                     Username
