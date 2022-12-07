@@ -5,6 +5,7 @@ import './App.css'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
+import AddPlacePage from './components/AddPlacePage'
 
 function App() {
   const [places, setPlaces] = useState([])
@@ -77,6 +78,7 @@ function App() {
         <Route path='/' element={<Home places={places} updateUser={updateUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
+        <Route path='/place/new' element={<AddPlacePage updateUser={updateUser} addPlace={addPlace} updatePlace={updatePlace} deletePlace={deletePlace} />} />
       </Routes>
     </Router>
   )
