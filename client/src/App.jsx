@@ -50,9 +50,6 @@ function App() {
         console.log(res)
       }
     })
-    // .then((response) => response.json())
-    // .then(places => setPlaces(places))
-    // .then(console.log(places))
   }, [])
 
   const updateUser = (user) => setCurrentUser(user)
@@ -77,7 +74,7 @@ function App() {
     <Router>
       <NavBar updateUser={updateUser}/>
       <Routes>
-        <Route path='/' element={<Home places={places}/>} />
+        <Route path='/' element={<Home places={places} updateUser={updateUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
       </Routes>
