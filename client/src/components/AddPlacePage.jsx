@@ -65,4 +65,4 @@ export default function AddPlacePage({ addPlace }) {
           {errors?errors.map(e => <h2 style={{color:'red'}}>{e.toUpperCase()}</h2>):null}
           </div>
         )
-}
+};
