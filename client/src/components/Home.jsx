@@ -1,8 +1,8 @@
 import PlaceContainer from './PlaceContainer'
 
-function Home({ places }) {
+function Home({ places, fetchUser }) {
     return (
-        <PlaceContainer places={places} />
+        <PlaceContainer places={places} fetchUser={fetchUser}/>
     )
 }
 

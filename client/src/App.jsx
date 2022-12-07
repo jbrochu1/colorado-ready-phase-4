@@ -53,6 +53,18 @@ function App() {
     })
   }, [])
 
+  const fetchAuthorizedUser = () => {
+    fetch('/api/authorized_user')
+      .then((res) => {
+        if(res.ok){
+          res.json()
+            .then((user) => {
+              updateUser(user)
+            })
+        }
+      })
+  }
+
   const updateUser = (user) => setCurrentUser(user)
 
   const addPlace = (place) => setPlaces(current => [...current, place])
@@ -75,7 +87,7 @@ function App() {
     <Router>
       <NavBar updateUser={updateUser}/>
       <Routes>
-        <Route path='/' element={<Home places={places} updateUser={updateUser}/>} />
+        <Route path='/' element={<Home places={places} updateUser={updateUser} fetchUser={fetchAuthorizedUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} />} />

@@ -1,11 +1,12 @@
 import PlaceCard from './PlaceCard'
 
-function PlaceContainer({ places }) {
+function PlaceContainer({ places, fetchUser }) {
     const placeCard = places.map(place => {
         return (
             <PlaceCard
                 key={place.name}
                 place={place}
+                fetchUser={fetchUser}
             />
         )
     })

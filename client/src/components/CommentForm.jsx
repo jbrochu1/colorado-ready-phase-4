@@ -1,13 +1,15 @@
 import { useState } from "react"
-export default function CommentForm() {
+import { useParams } from 'react-router-dom'
 
-    const [formData, setFormData] = useState({
+export default function CommentForm({ place, fetchUser }) {
+  const [formData, setFormData] = useState({
         comment:'',
         rating:'',
-        user_id:'',
-        place_id:''
+        user_id: '',
+        place_id: ''
       })
       const [errors, setErrors] = useState([])
+      const params = useParams()
     
       const handleChange = (e) => {
         const { name, value } = e.target
@@ -16,13 +18,15 @@ export default function CommentForm() {
     
       function onSubmit(e){
         e.preventDefault()
+        fetchUser()
         
-        fetch('api/content',{
+        fetch('/api/contents',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify({...formData})
+          body:JSON.stringify({...formData, place_id:place.id})
         })
         .then(res => {
+          console.log(user)
           if(res.ok){
             res.json().then(addPlace)
           } else {
@@ -31,6 +35,7 @@ export default function CommentForm() {
           }
         })
       }
+
         return (
           <div>
           {errors?errors.map(e => <div>{e}</div>):null}
