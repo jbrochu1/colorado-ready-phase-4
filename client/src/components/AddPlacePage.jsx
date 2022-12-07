@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function AddPlacePage() {
+export default function AddPlacePage({ addPlace }) {
     const [formData, setFormData] = useState({
         name:'',
         address:'',

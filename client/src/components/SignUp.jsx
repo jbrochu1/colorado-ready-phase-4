@@ -70,7 +70,7 @@ function SignUp({ updateUser }) {
                 <label>
                     Password
                 </label>
-                <input type='password' name='password' value={password} onChange={handleChange} />
+                <input type='password' name='password' placeholder="Password..." value={password} onChange={handleChange} />
                 <label>
                     First Name
                 </label>

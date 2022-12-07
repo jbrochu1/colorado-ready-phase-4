@@ -78,7 +78,7 @@ function App() {
         <Route path='/' element={<Home places={places} updateUser={updateUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
-        <Route path='/place/new' element={<AddPlacePage updateUser={updateUser} addPlace={addPlace} updatePlace={updatePlace} deletePlace={deletePlace} />} />
+        <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} />} />
       </Routes>
     </Router>
   )
