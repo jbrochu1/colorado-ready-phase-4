@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useParams } from 'react-router-dom'
 
-export default function CommentForm({ place, fetchUser }) {
+export default function CommentForm({ place, updateUser, currentUser }) {
+  // console.log(user)
   const [formData, setFormData] = useState({
         comment:'',
         rating:'',
@@ -18,22 +19,34 @@ export default function CommentForm({ place, fetchUser }) {
     
       function onSubmit(e){
         e.preventDefault()
-        fetchUser()
+        fetchAuthorizedUser()
         
         fetch('/api/contents',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify({...formData, place_id:place.id})
+          body:JSON.stringify({...formData, place_id:place.id, user_id:currentUser.id})
         })
         .then(res => {
-          console.log(user)
+          console.log(currentUser)
           if(res.ok){
-            res.json().then(addPlace)
+            res.json()
           } else {
             //Display errors
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }
         })
+      }
+
+      const fetchAuthorizedUser = () => {
+        fetch('/api/authorized_user')
+          .then((res) => {
+            if(res.ok){
+              res.json()
+                .then((currentUser) => {
+                  updateUser(currentUser)
+                })
+            }
+          })
       }
 
         return (

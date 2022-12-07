@@ -1,5 +1,7 @@
 import CommentForm from "./CommentForm"
-function PlaceCard({ place, fetchUser }) {
+// import PlaceMap from './PlaceMap'
+
+function PlaceCard({ place, updateUser, currentUser }) {
     const {name, address, category, image, hours, elevation, kid_friendly} = place
 
     return(
@@ -11,6 +13,7 @@ function PlaceCard({ place, fetchUser }) {
                 <p>{address}</p>
                 <p>{hours}</p>
                 <p>{elevation}</p>
+                {/* <PlaceMap /> */}
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
             </div>
             <div>
@@ -25,7 +28,7 @@ function PlaceCard({ place, fetchUser }) {
                     })}
                 </div>
                 <div>
-                    <CommentForm place={place} fetchUser={fetchUser}/>
+                    <CommentForm place={place} updateUser={updateUser} currentUser={currentUser} />
                 </div>
             </div>
         </div>

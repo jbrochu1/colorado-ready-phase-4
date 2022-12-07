@@ -1,12 +1,13 @@
 import PlaceCard from './PlaceCard'
 
-function PlaceContainer({ places, fetchUser }) {
+function PlaceContainer({ places, updateUser, currentUser }) {
     const placeCard = places.map(place => {
         return (
             <PlaceCard
                 key={place.name}
                 place={place}
-                fetchUser={fetchUser}
+                updateUser={updateUser}
+                currentUser={currentUser}
             />
         )
     })

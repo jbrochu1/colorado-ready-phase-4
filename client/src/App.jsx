@@ -65,7 +65,7 @@ function App() {
       })
   }
 
-  const updateUser = (user) => setCurrentUser(user)
+  const updateUser = (currentUser) => setCurrentUser(currentUser)
 
   const addPlace = (place) => setPlaces(current => [...current, place])
 
@@ -87,7 +87,7 @@ function App() {
     <Router>
       <NavBar updateUser={updateUser}/>
       <Routes>
-        <Route path='/' element={<Home places={places} updateUser={updateUser} fetchUser={fetchAuthorizedUser}/>} />
+        <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} />} />
