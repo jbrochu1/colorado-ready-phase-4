@@ -1,3 +1,4 @@
-export default function CommentForm {
+export default function CommentForm() {
 
+    
 };
