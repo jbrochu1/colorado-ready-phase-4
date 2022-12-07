@@ -35,10 +35,10 @@ export default function CommentForm() {
           {errors?errors.map(e => <div>{e}</div>):null}
           <form onSubmit={onSubmit}>
             <label>Comment </label>
-            <input type='text' name='name' value={formData.name} onChange={handleChange} />
+            <input type='text' name='comment' value={formData.comment} onChange={handleChange} />
             
             <label> Rating</label>
-            <input type='text' name='address' value={formData.address} onChange={handleChange} />
+            <input type='dropdown' name='rating' value={formData.rating} onChange={handleChange} />
           
             <input type='submit' value='Create' />
           </form>
