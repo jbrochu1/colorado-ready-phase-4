@@ -24,7 +24,7 @@ function PlaceCard({ place }) {
                     })}
                 </div>
                 <div>
-                    <CommentForm />
+                    {/* <CommentForm /> */}
                 </div>
             </div>
         </div>
