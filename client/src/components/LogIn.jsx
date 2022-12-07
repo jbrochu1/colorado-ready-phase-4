@@ -34,7 +34,8 @@ function LogIn({ updateUser }) {
                         navigate(`/`)
                     })
                 } else {
-                    console.log(res)
+                    res.json()
+                    .then(json => setErrors(json.errors))
                 }
             })
     }
