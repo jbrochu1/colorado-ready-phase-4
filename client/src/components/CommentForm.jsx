@@ -1,3 +1,4 @@
+import { useState } from "react"
 export default function CommentForm() {
 
     const [formData, setFormData] = useState({
@@ -8,28 +9,28 @@ export default function CommentForm() {
       })
       const [errors, setErrors] = useState([])
     
-    //   const handleChange = (e) => {
-    //     const { name, value } = e.target
-    //     setFormData({ ...formData, [name]: value })
-    //   }
+      const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+      }
     
-    //   function onSubmit(e){
-    //     e.preventDefault()
+      function onSubmit(e){
+        e.preventDefault()
         
-    //     fetch('api/content',{
-    //       method:'POST',
-    //       headers: {'Content-Type': 'application/json'},
-    //       body:JSON.stringify({...formData})
-    //     })
-    //     .then(res => {
-    //       if(res.ok){
-    //         res.json().then(addPlace)
-    //       } else {
-    //         //Display errors
-    //         res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
-    //       }
-    //     })
-    //   }
+        fetch('api/content',{
+          method:'POST',
+          headers: {'Content-Type': 'application/json'},
+          body:JSON.stringify({...formData})
+        })
+        .then(res => {
+          if(res.ok){
+            res.json().then(addPlace)
+          } else {
+            //Display errors
+            res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+          }
+        })
+      }
         return (
           <div>
           {errors?errors.map(e => <div>{e}</div>):null}

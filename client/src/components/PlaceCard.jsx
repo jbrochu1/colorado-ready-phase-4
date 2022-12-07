@@ -1,3 +1,4 @@
+import CommentForm from "./CommentForm"
 function PlaceCard({ place }) {
     const {name, address, category, image, hours, elevation, kid_friendly} = place
 
@@ -24,7 +25,7 @@ function PlaceCard({ place }) {
                     })}
                 </div>
                 <div>
-                    {/* <CommentForm /> */}
+                    <CommentForm />
                 </div>
             </div>
         </div>
