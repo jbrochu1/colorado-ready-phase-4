@@ -19,7 +19,7 @@ function LogIn({ updateUser }) {
             email,
             password
         }
-        fetch('api/login', {
+        fetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
