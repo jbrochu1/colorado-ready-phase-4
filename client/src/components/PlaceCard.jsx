@@ -32,3 +32,8 @@ function PlaceCard({ place }) {
 }
 
 export default PlaceCard
+// c1 = Content.first
+// c1.user.username
+//=> "miranda"
+
+//Make Content Cards and Content Container its own thing within Place Cards

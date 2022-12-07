@@ -4,7 +4,7 @@ function PlaceContainer({ places }) {
     const placeCard = places.map(place => {
         return (
             <PlaceCard
-                key={place.id}
+                key={place.name}
                 place={place}
             />
         )

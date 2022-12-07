@@ -29,7 +29,7 @@ function SignUp({ updateUser }) {
             age,
             avatar_img
         }
-        fetch('/login', {
+        fetch('/api/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,10 +37,12 @@ function SignUp({ updateUser }) {
             body: JSON.stringify(user)
         })
             .then((res) => {
+                console.log(res)
+                console.log(user)
                 if (res.ok) {
                     res.json().then(user => {
                         updateUser(user)
-                        navigate(`/users/${user.id}`)
+                        navigate(`/`)
                     })
                 } else {
                     res.json().then(json => setErrors(Object.entries(json.errors)))
@@ -91,7 +93,7 @@ function SignUp({ updateUser }) {
                 <input type='text' name='avatar_img' value={avatar_img} onChange={handleChange} />
                 <input type='submit' value='Sign Up'/>
             </form>
-            { errors ? errors.map(<div>{ e[0] + ': ' + e[1] }</div>) : null }
+            {/* { errors ? errors.map(<div>{ e[0] + ': ' + e[1] }</div>) : null } */}
         </>
     )
 }
