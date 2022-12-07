@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import LogIn from './components/LogIn'
 import './App.css'
 import Home from './components/Home'
+import NavBar from './components/NavBar'
+import SignUp from './components/SignUp'
 
 function App() {
   const [places, setPlaces] = useState([])
@@ -19,7 +21,7 @@ function App() {
               updateUser(user);
               fetchPlaces()
             });
-        }
+        } 
       })
   }, [])
 
@@ -61,9 +63,11 @@ function App() {
 
   return (
     <Router>
+      <NavBar updateUser={updateUser}/>
       <Routes>
         <Route path='/' element={<Home places={places}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
+        <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
       </Routes>
     </Router>
   )
