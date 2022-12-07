@@ -11,3 +11,5 @@ Colorado Ready!
 * As a user I can add attractions.  As the creator of an attraction, I can edit the attraction.
 
 * As a user I can add comments and edit or delete my own comments.
+
+
