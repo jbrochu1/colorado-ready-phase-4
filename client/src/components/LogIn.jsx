@@ -60,7 +60,7 @@ function LogIn({ updateUser }) {
                 <label>
                     Password
                 </label>
-                <input type='text' name='password' value={password} onChange={handleChange} />
+                <input type='password' name='password' value={password} onChange={handleChange} />
                 <input type='submit' value='Log In'/>
             </form>
             { errors ? <div>{errors}</div> : null }

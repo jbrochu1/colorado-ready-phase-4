@@ -1,11 +1,11 @@
 import { useState } from "react"
-export default function CommentForm() {
 
-    const [formData, setFormData] = useState({
+export default function CommentForm({ place, updateUser, currentUser }) {
+  const [formData, setFormData] = useState({
         comment:'',
         rating:'',
-        user_id:'',
-        place_id:''
+        user_id: '',
+        place_id: ''
       })
       const [errors, setErrors] = useState([])
     
@@ -16,21 +16,37 @@ export default function CommentForm() {
     
       function onSubmit(e){
         e.preventDefault()
+        fetchAuthorizedUser()
         
-        fetch('api/content',{
+        fetch('/api/contents',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify({...formData})
+          body:JSON.stringify({...formData, place_id:place.id, user_id:currentUser.id})
         })
         .then(res => {
+          console.log(currentUser)
           if(res.ok){
-            res.json().then(addPlace)
-          } else {
+            res.json()
+          } 
+          else {
             //Display errors
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }
         })
       }
+
+      const fetchAuthorizedUser = () => {
+        fetch('/api/authorized_user')
+          .then((res) => {
+            if(res.ok){
+              res.json()
+                .then((currentUser) => {
+                  updateUser(currentUser)
+                })
+            }
+          })
+      }
+
         return (
           <div>
           {errors?errors.map(e => <div>{e}</div>):null}

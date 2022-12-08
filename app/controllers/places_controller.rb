@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
 
-    skip_before_action :authorized_user, only: [:index, :show]
+    skip_before_action :authorized_user, only: [:index, :show, :create]
 
     before_action :set_place, only: [:show, :update, :destroy]
 
@@ -10,6 +10,12 @@ class PlacesController < ApplicationController
     
     def show
         render json: @place, status: :ok
+    end
+
+    def create
+        @place = Place.create!(place_params)
+        # @place.user_id = session[:user_id] 
+        render json: @place, status: :created
     end
 
     def update

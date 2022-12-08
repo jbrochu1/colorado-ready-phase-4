@@ -1,5 +1,6 @@
-import { useState } from "react"
-export default function AddPlacePage() {
+import { useState } from 'react'
+
+export default function AddPlacePage({ addPlace }) {
     const [formData, setFormData] = useState({
         name:'',
         address:'',
@@ -20,7 +21,7 @@ export default function AddPlacePage() {
       function onSubmit(e){
         e.preventDefault()
         
-        fetch('api/places',{
+        fetch('/api/places',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
           body:JSON.stringify({...formData})
@@ -36,7 +37,7 @@ export default function AddPlacePage() {
       }
         return (
           <div>
-          {errors?errors.map(e => <div>{e}</div>):null}
+          { errors ? errors.map(e => <div>{e}</div>) : null}
           <form onSubmit={onSubmit}>
             <label>Name </label>
             <input type='text' name='name' value={formData.name} onChange={handleChange} />
@@ -45,7 +46,7 @@ export default function AddPlacePage() {
             <input type='text' name='address' value={formData.address} onChange={handleChange} />
           
             <label>Category</label>
-            <input type='number' name='category' value={formData.category} onChange={handleChange} />
+            <input type='text' name='category' value={formData.category} onChange={handleChange} />
           
             <label>Image</label>
             <input type='text' name='image' value={formData.image} onChange={handleChange} />
@@ -54,14 +55,14 @@ export default function AddPlacePage() {
             <input type='text' name='hours' value={formData.hours} onChange={handleChange} />
           
             <label>Elevation</label>
-            <textarea type='text' rows='4' cols='50' name='elevation' value={formData.elevation} onChange={handleChange} />
+            <textarea type='text' name='elevation' value={formData.elevation} onChange={handleChange} />
 
             <label>Kid Friendly</label>
-            <textarea type='text' rows='4' cols='50' name='kid friendly' value={formData.kid_friendly} onChange={handleChange} />
+            <textarea type='text' name='kid friendly' value={formData.kid_friendly} onChange={handleChange} />
           
             <input type='submit' value='Create' />
           </form>
-          {errors?errors.map(e => <h2 style={{color:'red'}}>{e.toUpperCase()}</h2>):null}
+          {errors ? errors.map(e => <h2 style={{color:'red'}}>{e.toUpperCase()}</h2>) : null}
           </div>
         )
 };

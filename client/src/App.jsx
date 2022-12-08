@@ -6,6 +6,7 @@ import Home from './components/Home'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
 import AddPlacePage from './components/AddPlacePage'
+import PlaceDetails from './components/PlaceDetails'
 
 function App() {
   const [places, setPlaces] = useState([])
@@ -53,9 +54,21 @@ function App() {
     })
   }, [])
 
-  const updateUser = (user) => setCurrentUser(user)
+  // const fetchAuthorizedUser = () => {
+  //   fetch('/api/authorized_user')
+  //     .then((res) => {
+  //       if(res.ok){
+  //         res.json()
+  //           .then((user) => {
+  //             updateUser(user)
+  //           })
+  //       }
+  //     })
+  // }
 
-  const addPlace = (place) => setPlaces(current => [...current, place])
+  const updateUser = (currentUser) => setCurrentUser(currentUser)
+
+  const addPlace = (newPlace) => setPlaces(places => [...places, newPlace])
 
   const updatePlace = (updatedPlace) => setPlaces(current => {
     return current.map(place => {
@@ -75,10 +88,11 @@ function App() {
     <Router>
       <NavBar updateUser={updateUser}/>
       <Routes>
-        <Route path='/' element={<Home places={places} updateUser={updateUser}/>} />
+        <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
-        <Route path='/place/new' element={<AddPlacePage updateUser={updateUser} addPlace={addPlace} updatePlace={updatePlace} deletePlace={deletePlace} />} />
+        <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} />} />
+        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser}/>}/>
       </Routes>
     </Router>
   )
