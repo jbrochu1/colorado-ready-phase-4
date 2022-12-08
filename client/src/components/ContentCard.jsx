@@ -1,4 +1,6 @@
-function ContentCard({ content, onDeleteContent, onEditContent, place }) {
+import ContentEditForm from "./ContentEditForm"
+
+function ContentCard({ content, onDeleteContent, onEditContent, }) {
     const { id, comment, rating, user } = content
 
     
@@ -16,6 +18,7 @@ function ContentCard({ content, onDeleteContent, onEditContent, place }) {
             <p>"{comment}" - {user.username}, {user.state}</p>
             <p>{rating} / 5</p>
             <button onClick={handleDelete}>DELETE</button>
+            <ContentEditForm onEditContent={onEditContent} contentID={content.id}/>
         </div>
     )
 

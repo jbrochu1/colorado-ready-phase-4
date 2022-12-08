@@ -23,7 +23,7 @@ function PlaceCard({ place, updateUser, currentUser }) {
                 <div>
                     {place.contents.map(content => {
                     return(
-                        <div>
+                        <div key={content.id}>
                                 <p>{content.comment}</p>
                                 <p>{content.rating}</p>
                         </div>
