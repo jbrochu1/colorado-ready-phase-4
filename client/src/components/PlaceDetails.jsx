@@ -13,7 +13,7 @@ function PlaceDetails({ updateUser, currentUser }) {
         setPlaceContents(updatedContent)
     }
 
-    const handleNewContent = (newContent) => {
+    function handleNewContent(newContent){
         setPlaceContents((placeContents) => [...placeContents, newContent])
     }
 
@@ -57,7 +57,7 @@ function PlaceDetails({ updateUser, currentUser }) {
                 place={place}
                 updateUser={updateUser}
                 currentUser={currentUser}
-                onNewContent={handleNewContent}
+                handleNewContent={handleNewContent}
             />
             {contents.length > 0
                 ? <ContentList

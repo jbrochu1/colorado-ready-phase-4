@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-export default function CommentForm({ place, updateUser, onNewContent, currentUser }) {
+export default function CommentForm({ place, updateUser, handleNewContent, currentUser }) {
   const [formData, setFormData] = useState({
         comment:'',
         rating:'',
-        user_id: '',
-        place_id: ''
+        user_id: currentUser.id,
+        place_id: place.id
       })
       const [errors, setErrors] = useState([])
     
@@ -21,18 +21,19 @@ export default function CommentForm({ place, updateUser, onNewContent, currentUs
         fetch('/api/contents',{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify({...formData, place_id:place.id, user_id:currentUser.id})
+          body:JSON.stringify({...formData})
         })
         .then(res => {
           console.log(currentUser)
           if(res.ok){
             res.json()
-            .then(data => onNewContent(data))
+            .then((newContent) => {handleNewContent(newContent)})
           } 
           else {
             //Display errors
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }
+          setFormData(formData)
         })
       }
 
