@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function CommentForm({ place, updateUser, currentUser }) {
+export default function CommentForm({ place, updateUser, onNewContent, currentUser }) {
   const [formData, setFormData] = useState({
         comment:'',
         rating:'',
@@ -15,8 +15,8 @@ export default function CommentForm({ place, updateUser, currentUser }) {
       }
     
       function onSubmit(e){
-        e.preventDefault()
-        fetchAuthorizedUser()
+        e.preventDefault();
+        fetchAuthorizedUser();
         
         fetch('/api/contents',{
           method:'POST',
@@ -27,6 +27,7 @@ export default function CommentForm({ place, updateUser, currentUser }) {
           console.log(currentUser)
           if(res.ok){
             res.json()
+            .then(data => onNewContent(data))
           } 
           else {
             //Display errors

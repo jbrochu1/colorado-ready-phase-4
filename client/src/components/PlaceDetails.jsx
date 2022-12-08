@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import CommentForm from "./CommentForm";
 import ContentList from "./ContentList"
 
-function PlaceDetails({ updateUser, currentUser }) {
+function PlaceDetails({ updateUser, currentUser, handleNewContent }) {
     const [place, setPlace] = useState(null)
     const [placeContents, setPlaceContents] = useState([])
     const { id } = useParams()
@@ -13,9 +13,9 @@ function PlaceDetails({ updateUser, currentUser }) {
         setPlaceContents(updatedContent)
     }
 
-    const handleNewContent = (newContent) => {
-        setPlaceContents((placeContents) => [...placeContents, newContent])
-    }
+    // const handleNewContent = (newContent) => {
+    //     setPlaceContents((placeContents) => [...placeContents, newContent])
+    // }
 
     const handleEditContent = (updatedContent) => {
         setPlaceContents(placeContents => placeContents.map(oldContent => {
@@ -32,6 +32,7 @@ function PlaceDetails({ updateUser, currentUser }) {
             .then((r) => r.json())
             .then((place) => {
                 setPlace(place);
+                setPlaceContents(place.contents);
             });
     }, [id]);
 

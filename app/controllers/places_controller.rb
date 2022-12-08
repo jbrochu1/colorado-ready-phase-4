@@ -14,7 +14,6 @@ class PlacesController < ApplicationController
 
     def create
         @place = Place.create!(place_params)
-        # @place.user_id = session[:user_id] 
         render json: @place, status: :created
     end
 
