@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import CommentForm from "./CommentForm";
 import ContentList from "./ContentList"
 
-function PlaceDetails({ updateUser, currentUser, handleNewContent }) {
+function PlaceDetails({ updateUser, currentUser }) {
     const [place, setPlace] = useState(null)
     const [placeContents, setPlaceContents] = useState([])
     const { id } = useParams()
@@ -13,9 +13,9 @@ function PlaceDetails({ updateUser, currentUser, handleNewContent }) {
         setPlaceContents(updatedContent)
     }
 
-    // const handleNewContent = (newContent) => {
-    //     setPlaceContents((placeContents) => [...placeContents, newContent])
-    // }
+    function handleNewContent(newContent){
+        setPlaceContents((placeContents) => [...placeContents, newContent])
+    }
 
     const handleEditContent = (updatedContent) => {
         setPlaceContents(placeContents => placeContents.map(oldContent => {
@@ -33,6 +33,7 @@ function PlaceDetails({ updateUser, currentUser, handleNewContent }) {
             .then((place) => {
                 setPlace(place);
                 setPlaceContents(place.contents);
+                console.log(place.contents)
             });
     }, [id]);
 
@@ -51,11 +52,12 @@ function PlaceDetails({ updateUser, currentUser, handleNewContent }) {
                 <p>Elevation: {elevation}'</p>
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
             </div>
+            {/* <button><Link to='/comment'>Leave a Comment</Link></button> */}
             <CommentForm
                 place={place}
                 updateUser={updateUser}
                 currentUser={currentUser}
-                onNewContent={handleNewContent}
+                handleNewContent={handleNewContent}
             />
             {contents.length > 0
                 ? <ContentList

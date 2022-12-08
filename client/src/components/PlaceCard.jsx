@@ -21,18 +21,18 @@ function PlaceCard({ place, updateUser, currentUser }) {
             </div>
             <div>
                 <div>
-                    {place.contents.map(content => {
+                    {/* {place.contents.map(content => {
                     return(
-                        <div>
+                        <div key={content.id}>
                                 <p>{content.comment}</p>
                                 <p>{content.rating}</p>
                         </div>
                     )
-                    })}
+                    })} */}
                     {/* <ContentList place={place}/> */}
                 </div>
                 <div>
-                    <CommentForm place={place} updateUser={updateUser} currentUser={currentUser} />
+                    {/* <CommentForm place={place} updateUser={updateUser} currentUser={currentUser} /> */}
                 </div>
             </div>
         </div>

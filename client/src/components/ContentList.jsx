@@ -1,6 +1,6 @@
 import ContentCard from './ContentCard'
 
-function ContentList({ place, contents, onDeleteContent, onEditContent }) {
+function ContentList({ contents, onDeleteContent, onEditContent }) {
 
     // Theory to get user data:
     // create a fetch statement here to '/api/contents' with the related place_id
@@ -13,7 +13,6 @@ function ContentList({ place, contents, onDeleteContent, onEditContent }) {
                 content={content}
                 onDeleteContent={onDeleteContent}
                 onEditContent={onEditContent}
-                place={place}
             />
         )
     })
