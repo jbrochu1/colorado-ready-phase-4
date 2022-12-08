@@ -31,7 +31,7 @@ class PlacesController < ApplicationController
     private
 
     def place_params
-        params.permit(:name, :address, :category, :image, :hours, :elevation, :kid_friendly)
+        params.permit(:name, :address, :category, :image, :hours, :elevation, :kid_friendly, :user_id)
     end
 
     def set_place

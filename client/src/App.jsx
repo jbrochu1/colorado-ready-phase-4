@@ -91,7 +91,7 @@ function App() {
         <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
-        <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} />} />
+        <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser}/>}/>
       </Routes>
     </Router>
