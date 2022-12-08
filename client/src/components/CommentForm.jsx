@@ -1,8 +1,6 @@
 import { useState } from "react"
-import { useParams } from 'react-router-dom'
 
 export default function CommentForm({ place, updateUser, currentUser }) {
-  // console.log(user)
   const [formData, setFormData] = useState({
         comment:'',
         rating:'',
@@ -10,7 +8,6 @@ export default function CommentForm({ place, updateUser, currentUser }) {
         place_id: ''
       })
       const [errors, setErrors] = useState([])
-      const params = useParams()
     
       const handleChange = (e) => {
         const { name, value } = e.target
@@ -30,7 +27,8 @@ export default function CommentForm({ place, updateUser, currentUser }) {
           console.log(currentUser)
           if(res.ok){
             res.json()
-          } else {
+          } 
+          else {
             //Display errors
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }
