@@ -1,3 +1,5 @@
+// import PlaceMap from "./PlaceMap" 
+
 function PlaceCard({ place }) {
     const {name, address, category, image, hours, elevation, kid_friendly} = place
 
@@ -10,6 +12,7 @@ function PlaceCard({ place }) {
                 <p>{address}</p>
                 <p>{hours}</p>
                 <p>{elevation}</p>
+                {/* <PlaceMap /> */}
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
             </div>
             <div>
