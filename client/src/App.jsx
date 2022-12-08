@@ -70,6 +70,10 @@ function App() {
 
   const addPlace = (newPlace) => setPlaces(places => [...places, newPlace])
 
+  const handleNewContent = (newContent) => {
+    setContents((contents) => [...contents, newContent])
+}
+
   const updatePlace = (updatedPlace) => setPlaces(current => {
     return current.map(place => {
       if(place.id === updatedPlace.id){
@@ -92,7 +96,7 @@ function App() {
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
-        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser}/>}/>
+        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} handleNewContent={handleNewContent}/>}/>
       </Routes>
     </Router>
   )

@@ -1,12 +1,13 @@
-function ContentCard({ content, onDeleteContent, onEditContent }) {
+function ContentCard({ content, onDeleteContent, onEditContent, place }) {
     const { id, comment, rating, user_id } = content
+
+    
 
     const handleDelete = () => {
         fetch(`/api/contents/${id}`, {
             method: 'DELETE',
         })
-        onDeleteContent(id)
-        window.location.reload();
+        .then(onDeleteContent)
     }
 
     return (
