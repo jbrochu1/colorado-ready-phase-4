@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function AddPlacePage({ place, updateUser, currentUser }) {
+export default function AddPlacePage({ addPlace, updateUser, currentUser }) {
     const [formData, setFormData] = useState({
         name:'',
         address:'',
@@ -30,7 +30,7 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
         .then(res => {
           console.log(currentUser)
           if(res.ok){
-            res.json()
+            res.json().then(addPlace)
           } else {
             //Display errors
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
