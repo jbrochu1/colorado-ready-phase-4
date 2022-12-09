@@ -68,32 +68,32 @@ export default function AddPlacePage({ currentUser }) {
       }
       
         return (
-          <div class="w-full max-w-md">
+          <div class="w-full max-w-lg">
           { errors ? errors.map(e => <div>{e}</div>) : null}
           <form onSubmit={onSubmit} className='p-3'>
             <div className='p-2 space-x-2'>
             <label>Name </label>
-            <input type='text' name='name' value={formData.name} onChange={handleChange}  />
+            <input type='text' name='name' className='w-2/3 float-right' value={formData.name} onChange={handleChange}  />
             </div>
             <div className='p-2 space-x-2'>
             <label> Address</label>
-            <input type='text' name='address' value={formData.address} onChange={handleChange} />
+            <input type='text' name='address' className='w-2/3 float-right' value={formData.address} onChange={handleChange} />
             </div>
             <div className='p-2 space-x-2'>
             <label>Category</label>
-            <input type='text' name='category' value={formData.category} onChange={handleChange} />
+            <input type='text' name='category' className='w-2/3 float-right' value={formData.category} onChange={handleChange} />
             </div>
             <div className='p-2 space-x-2'>
             <label>Image</label>
-            <input type='text' name='image' value={formData.image} onChange={handleChange} />
+            <input type='text' name='image' className='w-2/3 float-right' value={formData.image} onChange={handleChange} />
             </div>
             <div className='p-2 space-x-2'>
             <label>Hours</label>
-            <input type='text' name='hours' value={formData.hours} onChange={handleChange} />
+            <input type='text' name='hours' className='w-2/3 float-right' value={formData.hours} onChange={handleChange} />
             </div>
             <div className='p-2 space-x-2'>
             <label>Elevation</label>
-            <input type='text' name='elevation' value={formData.elevation} onChange={handleChange} />
+            <input type='text' name='elevation' className='w-2/3 float-right' value={formData.elevation} onChange={handleChange} />
             </div>
             <div className='p-2 space-x-2'>
             <label>Kid Friendly</label>

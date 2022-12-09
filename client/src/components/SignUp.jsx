@@ -60,7 +60,7 @@ function SignUp({ updateUser }) {
         <div>
             <p className='text-2xl p-3'>New User Sign Up</p>
         </div>
-        <div className=' p-2 flex md:flex md:items-center mb-6'>
+        <div className='p-2 max-w-lg'>
         
             <form onSubmit={onSubmit} className='justify-center items-center'>
                 <div className='p-2 space-x-2'>
@@ -105,12 +105,12 @@ function SignUp({ updateUser }) {
                 </label>
                 <input type='text' name='age' className='w-2/3 float-right' value={age} onChange={handleChange} />
                 </div>
-                <div className='p-2 space-x-2'>
+                <div className='p-1'>
                 <label>
                     Avatar Image
                 </label>
                 </div>
-                <div>
+                <div className='p-5'>
                 <input type='text' name='avatar_img'  className='w-full float-right' value={avatar_img} onChange={handleChange} />
                 </div>
                 <div className='p-5'>
