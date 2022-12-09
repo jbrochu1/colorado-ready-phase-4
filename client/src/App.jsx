@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
 import AddPlacePage from './components/AddPlacePage'
 import PlaceDetails from './components/PlaceDetails'
+import UserPage from './components/UserPage'
 
 function App() {
   const [places, setPlaces] = useState([])
@@ -97,6 +98,7 @@ function App() {
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} />}/>
+        <Route path='/profile' element={<UserPage currentUser={currentUser}/>}/>
       </Routes>
     </Router>
   )

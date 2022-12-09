@@ -27,7 +27,6 @@ function ContentCard({ content, onDeleteContent, onEditContent, currentUser }) {
             <img src={user.avatar_img} width="250" alt="No Image Uploaded" />
             <p>"{comment}" - {user.username}, {user.location}</p>
             <p>{rating} / 5</p>
-            {/* <button onClick={handleDelete}>DELETE</button> */}
             {(currentUser.id === user.id) ? (<><button onClick={handleDelete}>DELETE</button><ContentEditForm onEditContent={onEditContent} contentID={content.id}/></>) : null }
         </div>
     )

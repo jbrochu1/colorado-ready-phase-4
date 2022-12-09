@@ -18,7 +18,7 @@ function NavBar({ updateUser, currentUser }) {
             <button><Link to='/'>Home</Link></button>
             {currentUser ? <button><Link to='/place/new'>Add Place</Link></button> : null}
             {currentUser ? <button onClick={handleLogOut}>Log Out</button> : <button><Link to='/login'>Log In</Link></button>}
-            {currentUser ? (<button>Edit Profile</button>) : (<button><Link to='/sign_up'>Sign Up</Link></button>)}
+            {currentUser ? (<button><Link to='/profile'>Edit Profile</Link></button>) : (<button><Link to='/sign_up'>Sign Up</Link></button>)}
         </nav>
     )
 }
