@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import CommentForm from "./CommentForm";
 import ContentList from "./ContentList"
+import PlaceMap from './PlaceMap'
 
 function PlaceDetails({ updateUser, currentUser, deletePlace }) {
     const [place, setPlace] = useState(null)
@@ -60,6 +61,7 @@ function PlaceDetails({ updateUser, currentUser, deletePlace }) {
                 <p>Hours: {hours}</p>
                 <p>Elevation: {elevation}'</p>
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
+                <PlaceMap />
             </div>
             <CommentForm
                 place={place}
