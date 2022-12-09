@@ -50,27 +50,27 @@ function LogIn({ updateUser }) {
 
     return (
         <>
-        <div className=' p-2 flex md:flex md:items-center mb-6'>
+        <div className='p-2 max-w-lg'>
             <form onSubmit={onSubmit}>
                 <div className='p-2'>
                 <label>
                     Username
                 </label>
-                <input type='text' name='username' value={username} onChange={handleChange} />
+                <input type='text' name='username' className='w-2/3 float-right' value={username} onChange={handleChange} />
                 </div>
-                <div className='p-2'>
+                <div className='p-2 space-x-2'>
                 <label>
                     Email
                 </label>
-                <input type='text' name='email' value={email} onChange={handleChange} />
+                <input type='text' name='email' className='w-2/3 float-right' value={email} onChange={handleChange} />
                 </div>
-                <div className='p-2'>
+                <div className='p-2 space-x-2'>
                 <label>
                     Password
                 </label>
-                <input type='password' name='password' value={password} onChange={handleChange} />
+                <input type='password' name='password' className='w-2/3 float-right' value={password} onChange={handleChange} />
                 </div>
-                <div className='p-2'>
+                <div className='p-2 space-x-2'>
                 <input type='submit' value='Log In' className='p-3 shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white font-bold rounded'/>
                 </div>
             </form>

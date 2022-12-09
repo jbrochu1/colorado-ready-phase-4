@@ -5,6 +5,9 @@ import './App.css'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
+// Google map
+import PlaceMap from './components/PlaceMap'
+
 import AddPlacePage from './components/AddPlacePage'
 import PlaceDetails from './components/PlaceDetails'
 import UserPage from './components/UserPage'
@@ -63,6 +66,7 @@ function App() {
         <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
+        <Route path='/map' element={<PlaceMap/>}/>
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} deletePlace={deletePlace}/>} />
         <Route path='/profile' element={<UserPage/>} />

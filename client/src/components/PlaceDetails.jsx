@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import CommentForm from "./CommentForm";
 import ContentList from "./ContentList"
-import PlaceMap from "./PlaceMap"
+import PlaceMap from './PlaceMap'
 
 function PlaceDetails({ updateUser, currentUser, deletePlace }) {
     const [place, setPlace] = useState(null)
@@ -54,7 +54,7 @@ function PlaceDetails({ updateUser, currentUser, deletePlace }) {
     return (
         <>
             <div className="p-5 space-y-2">
-                <img src={image} alt="loading..." className="mx-auto" />
+                <img src={image} alt="loading..." className='mx-auto drop-shadow-white-4xl rounded-3xl' />
                 <h2 className="text-2xl">Name: {name}</h2>
                 <p>Category: {category}</p>
                 <p>Address: {address}</p>
