@@ -53,20 +53,7 @@ export default function AddPlacePage({ currentUser }) {
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
         }
       })
-  }
-
-      const fetchAuthorizedUser = () => {
-        fetch('/api/authorized_user')
-          .then((res) => {
-            if(res.ok){
-              res.json()
-                .then((currentUser) => {
-                  updateUser(currentUser)
-                })
-            }
-          })
-      }
-      
+  }   
         return (
           <div>
           { errors ? errors.map(e => <div>{e}</div>) : null}
@@ -97,12 +84,10 @@ export default function AddPlacePage({ currentUser }) {
             </div>
             <div className='p-2'>
             <label>Kid Friendly</label>
-            <select type='select' name='kid friendly' value={formData.kid_friendly} onChange={handleChange} >
-              <option value={kidFriendly}>Yes</option>
-              <option value={!kidFriendly}>No</option>
+            <select type='select' name='kid friendly' value={kidFriendly} onChange={handleKidFriendly} >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
             </select>
-          {/* <label>Kid Friendly</label>
-          <input type='checkbox' name='kid_friendly' value={kidFriendly} onCheck={handleKidFriendly} checked/> */}
         </div>
         <div className='p-3'>
           <input type='submit' value='Create' className='p-3 shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white font-bold rounded' />

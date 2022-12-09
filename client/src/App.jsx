@@ -65,7 +65,7 @@ function App() {
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} deletePlace={deletePlace}/>} />
-        <Route path='/profile' element={<UserPage currentUser={currentUser} />} />
+        <Route path='/profile' element={<UserPage/>} />
       </Routes>
     </Router>
     </div>
