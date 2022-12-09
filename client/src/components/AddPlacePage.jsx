@@ -71,31 +71,31 @@ export default function AddPlacePage({ currentUser }) {
           <div>
           { errors ? errors.map(e => <div>{e}</div>) : null}
           <form onSubmit={onSubmit} className='p-3'>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label>Name </label>
             <input type='text' name='name' value={formData.name} onChange={handleChange}  />
             </div>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label> Address</label>
             <input type='text' name='address' value={formData.address} onChange={handleChange} />
             </div>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label>Category</label>
             <input type='text' name='category' value={formData.category} onChange={handleChange} />
             </div>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label>Image</label>
             <input type='text' name='image' value={formData.image} onChange={handleChange} />
             </div>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label>Hours</label>
             <input type='text' name='hours' value={formData.hours} onChange={handleChange} />
             </div>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label>Elevation</label>
             <input type='text' name='elevation' value={formData.elevation} onChange={handleChange} />
             </div>
-            <div className='p-2'>
+            <div className='p-2 space-x-2'>
             <label>Kid Friendly</label>
             <select type='select' name='kid friendly' value={formData.kid_friendly} onChange={handleChange} >
               <option value={kidFriendly}>Yes</option>

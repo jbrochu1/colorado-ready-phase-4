@@ -30,9 +30,9 @@ function UserPage({ currentUser }) {
     return (
         <>
             {currentUser ? (
-                <div>
-                    <h1>{username}</h1>
-                    <img src={avatar_img} width="300" alt="No Image Uploaded (ಠ_ಠ)" />
+                <div className='space-y-2'>
+                    <h1 className='p-2'>{username}</h1>
+                    <img src={avatar_img} width="300" alt="No Image Uploaded (ಠ_ಠ)" className='mx-auto drop-shadow-white-4xl rounded-3xl'/>
                     <p>{first_name} {last_name}, {location}</p>
                     <p>{email}</p>
                     <p>Age: {age}</p>

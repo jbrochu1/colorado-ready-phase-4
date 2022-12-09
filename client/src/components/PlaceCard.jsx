@@ -10,7 +10,7 @@ function PlaceCard({ place, updateUser, currentUser }) {
         <div>
             <div className='p-10'>
                 <p className='text-2xl'>{name}</p>
-                <img src={image} alt="Rendering Error" className='mx-auto'/>
+                <img src={image} alt="Rendering Error" className='mx-auto drop-shadow-white-4xl rounded-3xl'/>
                 <p>Category: {category}</p>
                 <p>Address: {address}</p>
                 <p>Operating Hours: {hours}</p>
