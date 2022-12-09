@@ -61,8 +61,8 @@ function PlaceDetails({ updateUser, currentUser, deletePlace }) {
                 <p>Hours: {hours}</p>
                 <p>Elevation: {elevation}'</p>
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
-                <div className="align-center">
-                <PlaceMap />
+                <div >
+                    <PlaceMap />
                 </div>
             </div>
             <CommentForm

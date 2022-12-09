@@ -32,7 +32,8 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
 
     const mapStyles = {
         height: '60vh',
-        width: '50%',
+        width: '100%',
+        
     }
 
     const options = {

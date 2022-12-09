@@ -68,7 +68,7 @@ export default function AddPlacePage({ currentUser }) {
       }
       
         return (
-          <div>
+          <div class="w-full max-w-md">
           { errors ? errors.map(e => <div>{e}</div>) : null}
           <form onSubmit={onSubmit} className='p-3'>
             <div className='p-2 space-x-2'>
