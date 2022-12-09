@@ -3,4 +3,5 @@ class Place < ApplicationRecord
     has_many :users, through: :contents
     # belongs_to :user
 
+    validates :name, presence: true
 end

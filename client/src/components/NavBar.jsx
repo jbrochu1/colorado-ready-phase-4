@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function NavBar({ updateUser }) {
+function NavBar({ updateUser, currentUser }) {
 
     const handleLogOut = () => {
         fetch('/api/logout', {
@@ -16,10 +16,9 @@ function NavBar({ updateUser }) {
     return(
         <nav>
             <button><Link to='/'>Home</Link></button>
-            <button><Link to='/place/new'>Add Place</Link></button>
-            <button onClick={handleLogOut}>Log Out</button>
-            <button><Link to='/login'>Log In</Link></button>
-            <button><Link to='/sign_up'>Sign Up</Link></button>
+            {currentUser ? <button><Link to='/place/new'>Add Place</Link></button> : null}
+            {currentUser ? <button onClick={handleLogOut}>Log Out</button> : <button><Link to='/login'>Log In</Link></button>}
+            {currentUser ? (<button>Edit Profile</button>) : (<button><Link to='/sign_up'>Sign Up</Link></button>)}
         </nav>
     )
 }

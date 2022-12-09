@@ -74,23 +74,23 @@ function App() {
 //     setContents((contents) => [...contents, newContent])
 // }
 
-  const updatePlace = (updatedPlace) => setPlaces(current => {
-    return current.map(place => {
-      if(place.id === updatedPlace.id){
-        return updatedPlace
-      } else {
-        return place
-      }
-    })
-  })
+  // const updatePlace = (updatedPlace) => setPlaces(current => {
+  //   return current.map(place => {
+  //     if(place.id === updatedPlace.id){
+  //       return updatedPlace
+  //     } else {
+  //       return place
+  //     }
+  //   })
+  // })
 
-  const deletePlace = (id) => setPlaces(current => current.filter(place => place.id !== id))
+  // const deletePlace = (id) => setPlaces(current => current.filter(place => place.id !== id))
 
   if (errors) return <h1>{errors}</h1>
 
   return (
     <Router>
-      <NavBar updateUser={updateUser}/>
+      <NavBar updateUser={updateUser} currentUser={currentUser}/>
       <Routes>
         <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser}/>} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />

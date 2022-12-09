@@ -1,4 +1,4 @@
-import CommentForm from "./CommentForm"
+// import CommentForm from "./CommentForm"
 import { Link } from 'react-router-dom'
 // import ContentList from "./ContentList"
 // import PlaceMap from './PlaceMap'
