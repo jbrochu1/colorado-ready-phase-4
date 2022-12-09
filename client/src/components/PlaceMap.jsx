@@ -31,9 +31,8 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
     const myLatLng = { lat: -105.001715, lng: 39.752657 };
 
     const mapStyles = {
-        height: '100vh',
-        width: '60%',
-        left: "150px",
+        height: '60vh',
+        width: '50%',
     }
 
     const options = {
