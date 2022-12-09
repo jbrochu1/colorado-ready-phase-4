@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-    skip_before_action :authorized_user, only: [:index, :show]
+    skip_before_action :authorized_user, only: [:index, :show, :create]
 
     before_action :set_content, only: [:show, :update, :destroy]
 

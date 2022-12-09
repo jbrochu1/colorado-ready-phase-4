@@ -31,8 +31,8 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
     const myLatLng = { lat: -105.001715, lng: 39.752657 };
 
     const mapStyles = {
-        height: '95vh',
-        width: '80%',
+        height: '100vh',
+        width: '60%',
         left: "150px",
     }
 
@@ -92,10 +92,10 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
                             }}
                         />
                     ))}
-                    <Marker
+                    {/* <Marker
                         id="marker"
                         key={"marker title"}
-                        position={{ lat: marker.lat, lng: marker.lng }}
+                        position={{ lat: myLatLng.lat, lng: myLatLng.lng }}
                         icon={{
                             url: pnglogo,
                             scaledSize: new window.google.maps.Size(30, 30),
@@ -105,7 +105,7 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
                         // onClick={() => {
                         //     setSelected(marker);
                         // }}
-                    />
+                    /> */}
 
                 </GoogleMap>
             </LoadScript>

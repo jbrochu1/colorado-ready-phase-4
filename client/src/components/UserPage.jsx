@@ -7,10 +7,10 @@ function UserPage() {
     // const [errors, setErrors] = useState([])
 
     const params = useParams
-    const { id } = params
+    const { user_id } = params
 
     useEffect(() => {
-        fetch(`/users/${id}`)
+        fetch(`/users/${user_id}`)
             .then((r) => r.json())
             .then(user => setUser(user))
     }, [])
@@ -29,6 +29,13 @@ function UserPage() {
                     </li>
                 ))}
             </ul>
+            <h3>My Comments</h3>
+                    {user.contents.map(content => {
+                        <li>
+                            <h2>{content.place.name}</h2>
+                            <p>"{content.comment}" - {content.rating} / 5</p>
+                        </li>
+                    })}
         </div>
     )
 }

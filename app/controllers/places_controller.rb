@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
 
-    skip_before_action :authorized_user, only: [:index, :show]
+    skip_before_action :authorized_user, only: [:index, :show, :create]
 
     before_action :set_place, only: [:show, :update, :destroy]
 
@@ -10,6 +10,11 @@ class PlacesController < ApplicationController
     
     def show
         render json: @place, status: :ok
+    end
+
+    def create
+        @place = Place.create!(place_params)
+        render json: @place, status: :created
     end
 
     def update
@@ -25,7 +30,7 @@ class PlacesController < ApplicationController
     private
 
     def place_params
-        params.permit(:name, :address, :category, :image, :hours, :elevation, :kid_friendly)
+        params.permit(:name, :address, :category, :image, :hours, :elevation, :kid_friendly, :user_id)
     end
 
     def set_place

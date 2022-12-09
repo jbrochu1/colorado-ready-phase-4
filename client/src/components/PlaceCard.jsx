@@ -1,42 +1,41 @@
-import PlaceMap from "./PlaceMap" 
+// import CommentForm from "./CommentForm"
+import { Link } from 'react-router-dom'
+// import ContentList from "./ContentList"
 
-function PlaceCard({ place }) {
-    const {name, address, category, image, hours, elevation, kid_friendly} = place
+function PlaceCard({ place, updateUser, currentUser }) {
+    const { id, name, address, category, image, hours, elevation, kid_friendly } = place
 
-    return(
+    return (
         <div>
-            <div>
-                <h3>{name}</h3>
-                <img src={image} alt="Rendering Error"/>
-                <p>{category}</p>
-                <p>{address}</p>
-                <p>{hours}</p>
-                <p>{elevation}</p>
-                <PlaceMap />
+            <div className='p-10'>
+                <p className='text-2xl'>{name}</p>
+                <img src={image} alt="Rendering Error" className='mx-auto'/>
+                <p>Category: {category}</p>
+                <p>Address: {address}</p>
+                <p>Operating Hours: {hours}</p>
+                <p>Elevation: {elevation}</p>
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
+                
+                <Link to={`/places/${id}`}><button> See More Details!</button></Link>
             </div>
-            <div>
+            {/* <div>
                 <div>
                     {place.contents.map(content => {
                     return(
-                        <div>
+                        <div key={content.id}>
                                 <p>{content.comment}</p>
                                 <p>{content.rating}</p>
                         </div>
                     )
                     })}
+                    <ContentList place={place}/>
                 </div>
                 <div>
-                    {/* <CommentForm /> */}
+                    <CommentForm place={place} updateUser={updateUser} currentUser={currentUser} />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
 
 export default PlaceCard
-// c1 = Content.first
-// c1.user.username
-//=> "miranda"
-
-//Make Content Cards and Content Container its own thing within Place Cards

@@ -8,81 +8,72 @@ import SignUp from './components/SignUp'
 // Google map
 import PlaceMap from './components/PlaceMap'
 
+import AddPlacePage from './components/AddPlacePage'
+import PlaceDetails from './components/PlaceDetails'
+import UserPage from './components/UserPage'
 
 function App() {
   const [places, setPlaces] = useState([])
   const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState(false)
-  const [contents, setContents] = useState([])
+  // const [contents, setContents] = useState([])
 
-  // USE TO CHECK FOR USER LOGIN
-  // useEffect(() => {
-  //   fetch('/api/authorized_user')
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         res.json()
-  //           .then((user) => {
-  //             updateUser(user);
-  //             fetchPlaces() // <-- fetch request for particular data
-  //           });
-  //       } 
-  //     })
-  // }, [])
-
-  // const fetchPlaces = () => {
-  //   fetch('/api/places')
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         res.json().then(setPlaces)
-  //       } else {
-  //         res.json().then(data => setErrors(data.error))
-  //       }
-  //     })
-  // }
-
+  // CHECK FOR USER LOGIN
   useEffect(() => {
-    fetch('/api/places')
-    .then((res) => {
-      if (res.ok) {
-        res.json()
-        .then(setPlaces)
-        console.log(res)
-      } else {
-        res.json()
-        .then(data => setErrors(data.error))
-        console.log(res)
-      }
-    })
+    fetch('/api/authorized_user')
+      .then((res) => {
+        if (res.ok) {
+          res.json()
+            .then((user) => {
+              updateUser(user);
+              fetchPlaces();
+            });
+        } else {
+          updateUser(false)
+          fetchPlaces();
+        }
+      })
   }, [])
 
-  const updateUser = (user) => setCurrentUser(user)
+  // SET ALL PLACES TO STATE
+  const fetchPlaces = () => {
+    fetch('/api/places')
+      .then((res) => {
+        if (res.ok) {
+          res.json().then(setPlaces)
+        } else {
+          res.json().then(data => setErrors(data.error))
+        }
+      })
+  }
 
-  const addPlace = (place) => setPlaces(current => [...current, place])
+  // STATE HANDLER FOR USER V. GUEST
+  const updateUser = (currentUser) => setCurrentUser(currentUser)
 
-  const updatePlace = (updatedPlace) => setPlaces(current => {
-    return current.map(place => {
-      if(place.id === updatedPlace.id){
-        return updatedPlace
-      } else {
-        return place
-      }
-    })
-  })
+  // HANDLER FUNCTION TO POST NEW PLACE
+  const addPlace = (newPlace) => setPlaces(places => [...places, newPlace])
 
+  // HANDLER FUNCTION TO DELETE A USER'S OWN PLACE
   const deletePlace = (id) => setPlaces(current => current.filter(place => place.id !== id))
 
+  // ERRORS CATCH 
   if (errors) return <h1>{errors}</h1>
 
   return (
+    <div>
     <Router>
-      <NavBar updateUser={updateUser}/>
+      <NavBar updateUser={updateUser} currentUser={currentUser} />
       <Routes>
-        <Route path='/' element={<Home places={places} updateUser={updateUser}/>} />
+        <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/map' element={<PlaceMap/>}/>
+        <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
+        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} deletePlace={deletePlace}/>} />
+        <Route path='/profile' element={<UserPage currentUser={currentUser} />} />
       </Routes>
     </Router>
+    </div>
   )
 }
 
