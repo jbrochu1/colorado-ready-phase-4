@@ -53,7 +53,7 @@ function ContentEditForm({ onEditContent, contentID }) {
                     />
                 </div>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" className='p-3 shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white font-bold rounded'>Submit</button>
                 </div>
             </form>
         </div>

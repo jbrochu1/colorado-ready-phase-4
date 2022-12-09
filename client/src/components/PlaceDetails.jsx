@@ -52,9 +52,9 @@ function PlaceDetails({ updateUser, currentUser, deletePlace }) {
 
     return (
         <>
-            <div>
-                <img src={image} alt="loading..." />
-                <h2>Name: {name}</h2>
+            <div className="p-5 space-y-2">
+                <img src={image} alt="loading..." className="mx-auto" />
+                <h2 className="text-2xl">Name: {name}</h2>
                 <p>Category: {category}</p>
                 <p>Address: {address}</p>
                 <p>Hours: {hours}</p>
