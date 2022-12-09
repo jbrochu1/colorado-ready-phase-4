@@ -12,16 +12,16 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
     const [selected, setSelected] = useState(null)
 
     useEffect(() => {
-        fetch("./api/places") 
-        // {
-        //     headers: {
-        //        'Access-Control-Allow-Origin': '*'
-        //         // 'Content-Type': 'application/json'
-        //         // 'Content-Type': 'application/x-www-form-urlencoded',
-        //     }
-        // })
+        fetch("/api/places")
+            // {
+            //     headers: {
+            //        'Access-Control-Allow-Origin': '*'
+            //         // 'Content-Type': 'application/json'
+            //         // 'Content-Type': 'application/x-www-form-urlencoded',
+            //     }
+            // })
             .then(response => response.json())
-            .then((data) => setAdd(data))
+            .then((data) => console.log(data))
     }, []);
 
     const defaultCenter = {
@@ -49,6 +49,22 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
     //   });
     //   marker.setMap(map)
 
+    // window.initMap = initMap;
+
+    // function initMap() {
+    //     const myLatLng = { lat: -25.363, lng: 131.044 };
+    //     // console.log ('1')
+    //     const map = new google.maps.Map(document.getElementById("map"), {
+    //       zoom: 4,
+    //       center: myLatLng,
+    //     });
+
+    // new google.maps.Marker({
+    //     position: myLatLng,
+    //     map,
+    //     title: "Hello World!",
+    // });
+
     return (
 
         <div id="mapBoxContainer">
@@ -60,7 +76,7 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
                     options={options}
                 >
 
-                    {/* {add.map((marker) => (
+                    {add.map((marker) => (
                         <Marker
                             id="marker"
                             key={marker.post.title}
@@ -75,11 +91,11 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
                                 setSelected(marker);
                             }}
                         />
-                    ))} */}
-                    {/* <Marker
+                    ))}
+                    <Marker
                         id="marker"
                         key={"marker title"}
-                        position={{ lat: myLatLng.lat, lng: myLatLng.lng }}
+                        position={{ lat: marker.lat, lng: marker.lng }}
                         icon={{
                             url: pnglogo,
                             scaledSize: new window.google.maps.Size(30, 30),
@@ -89,7 +105,7 @@ export default function PlaceMap({ isAuthenticated, setUser, setIsAuthenticated,
                         // onClick={() => {
                         //     setSelected(marker);
                         // }}
-                    /> */}
+                    />
 
                 </GoogleMap>
             </LoadScript>
