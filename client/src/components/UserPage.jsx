@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 function UserPage() {
     const [user, setUser] = useState()
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
 
     const params = useParams
     const { id } = params
@@ -12,31 +12,26 @@ function UserPage() {
     useEffect(() => {
         fetch(`/api/users/${id}`)
             .then(res => {
-                if (res.ok) {
+                // if (res.ok) {
                     res.json().then(user => {
                         setUser(user)
                         console.log(user)
+                        console.log(user.username)
                     })
-                } else {
-                    res.json().then(data => setErrors(data.error))
-                }
+                // } else {
+                //     res.json().then(data => setErrors(data.errors))
+                // }
             })
 
     }, [])
 
-    if (errors) return <h1>{errors}</h1>
+    // if (errors) return <h1>{errors}</h1>
+
 
     return (
         <>
-            <img src={user.avatar_img} />
-            <h2>{user.username}</h2>
-            <h3>My Comments</h3>
-            {contents.map(content => {
-                <li>
-                    <h2>{content.place.name}</h2>
-                    <p>"{content.comment}" - {content.rating} / 5</p>
-                </li>
-            })}
+            <h3>Hello World!</h3>
+            {/* <h1>{user.first_name}</h1> */}
         </>
     )
 }
