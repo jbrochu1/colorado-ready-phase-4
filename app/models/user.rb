@@ -4,5 +4,5 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :username, presence: true
+    validates_presence_of :username, :email
 end

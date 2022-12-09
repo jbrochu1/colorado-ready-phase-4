@@ -50,6 +50,9 @@ function App() {
   // HANDLER FUNCTION TO POST NEW PLACE
   const addPlace = (newPlace) => setPlaces(places => [...places, newPlace])
 
+  // HANDLER FUNCTION TO DELETE A USER'S OWN PLACE
+  const deletePlace = (id) => setPlaces(current => current.filter(place => place.id !== id))
+
   // ERRORS CATCH 
   if (errors) return <h1>{errors}</h1>
 
@@ -61,7 +64,7 @@ function App() {
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
-        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} />} />
+        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} deletePlace={deletePlace}/>} />
         <Route path='/profile' element={<UserPage currentUser={currentUser} />} />
       </Routes>
     </Router>
