@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function AddPlacePage({ place, updateUser, currentUser }) {
+export default function AddPlacePage({ currentUser }) {
   const [formData, setFormData] = useState({
     name: '',
     address: '',
@@ -8,21 +9,25 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
     image: '',
     hours: '',
     elevation: '',
-    // kid_friendly: true,
     user_id: ''
   })
   const [kidFriendly, setKidFriendly] = useState(false)
   const [errors, setErrors] = useState([])
+  const navigate = useNavigate()
 
+
+  // SETS FORMDATA FOR INPUT ELEMENTS BELOW
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
 
+  // SETS STATE FOR BOOLEAN VALUE
   const handleKidFriendly = (e) => {
     setKidFriendly(toBool(e.target.value))
   }
 
+  // HANDLES KID_FRIENDLY EVENT VALUE AND CONVERTS FROM STRING TYPE
   const toBool = (value) => {
     if (value && typeof value === "string") {
       if (value.toLowerCase() === "true") return true;
@@ -32,34 +37,20 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
     return value;
   }
 
-  function onSubmit(e) {
-    // e.preventDefault()
-    fetchAuthorizedUser()
-
+  // PERSISTS NEW PLACE TO DATABASE & REFRESHES PAGE
+  function onSubmit() {
     fetch('/api/places', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...formData, kid_friendly: kidFriendly, user_id: currentUser.id })
     })
       .then(res => {
-        console.log(currentUser)
         if (res.ok) {
-          res.json()
+          res.json();
+          navigate('/');
         } else {
           //Display errors
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
-        }
-      })
-  }
-
-  const fetchAuthorizedUser = () => {
-    fetch('/api/authorized_user')
-      .then((res) => {
-        if (res.ok) {
-          res.json()
-            .then((currentUser) => {
-              updateUser(currentUser)
-            })
         }
       })
   }
@@ -94,12 +85,10 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
         </div>
         <div>
           <label>Kid Friendly</label>
-            <select type='select' name='kid friendly' value={kidFriendly} onChange={handleKidFriendly} >
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          {/* <label>Kid Friendly</label>
-          <input type='checkbox' name='kid_friendly' value={kidFriendly} onChange={handleKidFriendly} /> */}
+          <select type='select' name='kid friendly' value={kidFriendly} onChange={handleKidFriendly} >
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
         </div>
         <div>
           <input type='submit' value='Create' />
