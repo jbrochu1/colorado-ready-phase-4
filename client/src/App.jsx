@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import PlaceMap from './components/PlaceMap'
 import LogIn from './components/LogIn'
 import './App.css'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
+// Google map
+import PlaceMap from './components/PlaceMap'
 
 
 function App() {
