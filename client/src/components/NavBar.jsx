@@ -1,25 +1,24 @@
 import { Link } from 'react-router-dom'
 
-function NavBar({ updateUser }) {
+function NavBar({ updateUser, currentUser }) {
 
     const handleLogOut = () => {
         fetch('/api/logout', {
             method: 'DELETE'
         })
-        .then(res => {
-            if(res.ok){
-                updateUser(false)
-            }
-        })
+            .then(res => {
+                if (res.ok) {
+                    updateUser(false)
+                }
+            })
     }
 
-    return(
+    return (
         <nav>
             <button><Link to='/'>Home</Link></button>
-            <button><Link to='/place/new'>Add Place</Link></button>
-            <button onClick={handleLogOut}>Log Out</button>
-            <button><Link to='/login'>Log In</Link></button>
-            <button><Link to='/sign_up'>Sign Up</Link></button>
+            {currentUser ? <button><Link to='/place/new'>Add Place</Link></button> : null}
+            {currentUser ? <button onClick={handleLogOut}>Log Out</button> : <button><Link to='/login'>Log In</Link></button>}
+            {currentUser ? (<button><Link to='/profile'>Edit Profile</Link></button>) : (<button><Link to='/sign_up'>Sign Up</Link></button>)}
         </nav>
     )
 }

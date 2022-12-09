@@ -1,27 +1,25 @@
 import ContentEditForm from "./ContentEditForm"
 
-function ContentCard({ content, onDeleteContent, onEditContent, }) {
-    const { id, comment, rating, user } = content
+function ContentCard({ content, onDeleteContent, onEditContent, currentUser }) {
+    const { comment, rating, user } = content
 
-        
-
+    // DELETES THE COMMENT
     const handleDelete = () => {
-        fetch(`/api/contents/${id}`, {
+        fetch(`/api/contents/${content.id}`, {
             method: 'DELETE',
         })
-        .then(onDeleteContent)
+        onDeleteContent()
+        window.location.reload();
     }
 
     return (
         <div>
-            <img src={user.avatar_img} width="250" alt="https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg" />
+            <img src={user.avatar_img} width="250" alt="No Image Uploaded" />
             <p>"{comment}" - {user.username}, {user.location}</p>
             <p>{rating} / 5</p>
-            <button onClick={handleDelete}>DELETE</button>
-            <ContentEditForm onEditContent={onEditContent} contentID={content.id}/>
+            {(currentUser.id === user.id) ? (<><button onClick={handleDelete}>DELETE</button><ContentEditForm onEditContent={onEditContent} contentID={content.id} /></>) : null}
         </div>
     )
-
 }
 
 export default ContentCard

@@ -8,12 +8,12 @@ function PlaceDetails({ updateUser, currentUser }) {
     const [placeContents, setPlaceContents] = useState([])
     const { id } = useParams()
 
-    function handleDeleteContent(id) {
+    const handleDeleteContent = (id) => {
         const updatedContent = placeContents.filter((content) => content.id !== id);
         setPlaceContents(updatedContent)
     }
 
-    function handleNewContent(newContent){
+    const handleNewContent = (newContent) => {
         setPlaceContents((placeContents) => [...placeContents, newContent])
     }
 
@@ -32,7 +32,6 @@ function PlaceDetails({ updateUser, currentUser }) {
             .then((r) => r.json())
             .then((place) => {
                 setPlace(place);
-                setPlaceContents(place.contents);
                 console.log(place.contents)
             });
     }, [id]);
@@ -55,6 +54,8 @@ function PlaceDetails({ updateUser, currentUser }) {
             {/* <button><Link to='/comment'>Leave a Comment</Link></button> */}
             <CommentForm
                 place={place}
+                setPlace={setPlace}
+                placeContents={placeContents}
                 updateUser={updateUser}
                 currentUser={currentUser}
                 handleNewContent={handleNewContent}
@@ -63,8 +64,10 @@ function PlaceDetails({ updateUser, currentUser }) {
                 ? <ContentList
                     place={place}
                     contents={contents}
+                    currentUser={currentUser}
                     onDeleteContent={handleDeleteContent}
                     onEditContent={handleEditContent}
+                    updateUser={updateUser}
                 />
                 : <h1>Nothing here, add some content!</h1>}
         </>

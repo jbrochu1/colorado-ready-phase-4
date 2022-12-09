@@ -19,7 +19,7 @@ export default function AddPlacePage({ addPlace, updateUser, currentUser }) {
       }
     
       function onSubmit(e){
-        e.preventDefault()
+        // e.preventDefault()
         fetchAuthorizedUser()
 
         fetch('/api/places',{
