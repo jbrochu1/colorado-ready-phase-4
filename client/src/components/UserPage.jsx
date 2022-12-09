@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 
 function UserPage() {
-    const [user, setUser] = useState()
+    const [user, setUser] = useState([])
     // const [errors, setErrors] = useState([])
 
     const params = useParams
@@ -13,11 +13,10 @@ function UserPage() {
         fetch(`/api/users/${id}`)
             .then(res => {
                 // if (res.ok) {
-                    res.json().then(user => {
-                        setUser(user)
-                        console.log(user)
-                        console.log(user.username)
-                    })
+                res.json().then(user => {
+                    setUser(user)
+                    console.log(user)
+                })
                 // } else {
                 //     res.json().then(data => setErrors(data.errors))
                 // }
@@ -27,11 +26,29 @@ function UserPage() {
 
     // if (errors) return <h1>{errors}</h1>
 
+    const { first_name, last_name, email, location, age, username, avatar_img, contents } = user
 
     return (
         <>
-            <h3>Hello World!</h3>
-            {/* <h1>{user.first_name}</h1> */}
+            <h1>{username}'s Profile</h1>
+            <img src={avatar_img} width="250" alt="No Image Uploaded" />
+            <ul>
+                <li>First Name: {first_name}</li>
+                <li>Last Name: {last_name}</li>
+                <li>Email: {email}</li>
+                <li>Age: {age}</li>
+                <li>Location: {location}</li>
+                <br/>
+                {/* <h2>{username}'s Content</h2>
+                {contents.map(content => {
+                    return (
+                        <li>
+                            <h2>{content.place.name}</h2>
+                            <p>"{content.comment}" - {content.rating} / 5</p>
+                        </li>
+                    )
+                })} */}
+            </ul>
         </>
     )
 }
