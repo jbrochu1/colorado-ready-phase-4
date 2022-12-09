@@ -8,9 +8,9 @@ function PlaceCard({ place, updateUser, currentUser }) {
 
     return (
         <div>
-            <div>
-                <h3>{name}</h3>
-                <img src={image} alt="Rendering Error" />
+            <div className='p-10'>
+                <p className='text-2xl'>{name}</p>
+                <img src={image} alt="Rendering Error" className='mx-auto'/>
                 <p>Category: {category}</p>
                 <p>Address: {address}</p>
                 <p>Operating Hours: {hours}</p>
