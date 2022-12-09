@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import CommentForm from "./CommentForm";
 import ContentList from "./ContentList"
 
-function PlaceDetails({ updateUser, currentUser }) {
+function PlaceDetails({ updateUser, currentUser, deletePlace }) {
     const [place, setPlace] = useState(null)
     const [placeContents, setPlaceContents] = useState([])
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const handleDeleteContent = (id) => {
         const updatedContent = placeContents.filter((content) => content.id !== id);
@@ -40,6 +41,15 @@ function PlaceDetails({ updateUser, currentUser }) {
 
     const { name, address, category, image, hours, elevation, kid_friendly, contents } = place
 
+    const handleDelete = () => {
+        fetch(`/api/places/${id}`, {
+            method: 'DELETE',
+        })
+        deletePlace()
+        navigate('/');
+        window.location.reload();
+    }
+
     return (
         <>
             <div>
@@ -51,7 +61,6 @@ function PlaceDetails({ updateUser, currentUser }) {
                 <p>Elevation: {elevation}'</p>
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
             </div>
-            {/* <button><Link to='/comment'>Leave a Comment</Link></button> */}
             <CommentForm
                 place={place}
                 setPlace={setPlace}
@@ -70,6 +79,7 @@ function PlaceDetails({ updateUser, currentUser }) {
                     updateUser={updateUser}
                 />
                 : <h1>Nothing here, add some content!</h1>}
+                {place.user_id === currentUser.id ? (<button onClick={handleDelete}></button>) : null}
         </>
     )
 }

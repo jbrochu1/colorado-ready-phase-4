@@ -4,7 +4,7 @@ function PlaceContainer({ places, updateUser, currentUser }) {
     const placeCard = places.map(place => {
         return (
             <PlaceCard
-                key={place.name}
+                key={place.id}
                 place={place}
                 updateUser={updateUser}
                 currentUser={currentUser}
