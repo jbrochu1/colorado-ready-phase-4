@@ -43,7 +43,7 @@ export default function CommentForm({ place, currentUser, handleNewContent }) {
           <label> Rating</label>
           <input type='dropdown' name='rating' value={formData.rating} onChange={handleChange} />
 
-          <input type='submit' value='Create' />
+          <input type='submit' value='Create' className='p-3 shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white font-bold rounded'/>
         </form> : null}
       {errors ? errors.map(e => <h2 style={{ color: 'red' }}>{e.toUpperCase()}</h2>) : null}
     </div>

@@ -112,7 +112,7 @@ function SignUp({ updateUser }) {
                 <input type='text' name='avatar_img' value={avatar_img} onChange={handleChange} />
                 </div>
                 <div className='p-2'>
-                <input type='submit' value='Sign Up' className='p-3 shadow bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none text-white font-bold rounded'/>
+                <input type='submit' value='Sign Up' className='p-3 shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white font-bold rounded'/>
                 </div>
             </form>
             </div>

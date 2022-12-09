@@ -106,7 +106,7 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
           <input type='checkbox' name='kid_friendly' value={kidFriendly} onCheck={handleKidFriendly} checked/> */}
         </div>
         <div className='p-3'>
-          <input type='submit' value='Create' className='p-3 shadow bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none text-white font-bold rounded' />
+          <input type='submit' value='Create' className='p-3 shadow bg-indigo-600 hover:bg-indigo-500 focus:shadow-outline focus:outline-none text-white font-bold rounded' />
         </div>
       </form>
       {errors ? errors.map(e => <h2 style={{ color: 'red' }}>{e.toUpperCase()}</h2>) : null}

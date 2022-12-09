@@ -20,7 +20,7 @@ function ContentList({ contents, onDeleteContent, onEditContent, currentUser }) 
 
     return (
         <div>
-            <h2>Community Experiences</h2>
+            <h2 className='text-2xl'>Community Experiences</h2>
             <ul>
                 <li>
                     {contentCard}
