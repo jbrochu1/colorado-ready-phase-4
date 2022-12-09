@@ -4,7 +4,7 @@ function ContentEditForm({ onEditContent, contentID }) {
     const [rating, setRating] = useState('')
     const [comment, setComment] = useState('')
 
-
+    // SENDS PATCH REQUEST TO EDIT CONTENT
     const handleEdit = () => {
         e.preventDefault()
         fetch(`/api/contents/${contentID}`, {
@@ -38,14 +38,14 @@ function ContentEditForm({ onEditContent, contentID }) {
                         }}
                         value={comment}
                     />
-                    <label className="inputTitles">New Rating</label>
+                    <label>New Rating</label>
                     <input
                         placeholder="ex: 1, 3, 5"
                         type="number"
                         min="1"
                         max="5"
-                        id="star_rating"
-                        name="star_rating"
+                        id="rating"
+                        name="rating"
                         onChange={(e) => {
                             setRating(e.target.value);
                         }}

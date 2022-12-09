@@ -10,8 +10,10 @@ function LogIn({ updateUser }) {
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
 
+    // DESTRUCTURE FORMDATA OBJECT
     const { username, email, password } = formData
 
+    // SENDS REQUEST TO GET USERS AND SET SESSIONS
     function onSubmit(e) {
         e.preventDefault()
         const user = {
@@ -40,6 +42,7 @@ function LogIn({ updateUser }) {
             })
     }
 
+    // HANDLER FUNCTION SETS STATE FOR FORM DATA BASED ON INPUT
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })

@@ -93,7 +93,8 @@ function SignUp({ updateUser }) {
                 <input type='text' name='avatar_img' value={avatar_img} onChange={handleChange} />
                 <input type='submit' value='Sign Up'/>
             </form>
-            {/* { errors ? errors.map(<div>{ e[0] + ': ' + e[1] }</div>) : null } */}
+            { errors ? errors.map(err => <div>{ (err[0]) + ': ' + (err[1]) }</div>) : null }
+
         </>
     )
 }

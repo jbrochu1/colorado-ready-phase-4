@@ -13,9 +13,9 @@ function App() {
   const [places, setPlaces] = useState([])
   const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState(false)
-  const [contents, setContents] = useState([])
+  // const [contents, setContents] = useState([])
 
-  // USE TO CHECK FOR USER LOGIN
+  // CHECK FOR USER LOGIN
   useEffect(() => {
     fetch('/api/authorized_user')
       .then((res) => {
@@ -32,6 +32,7 @@ function App() {
       })
   }, [])
 
+  // SET ALL PLACES TO STATE
   const fetchPlaces = () => {
     fetch('/api/places')
       .then((res) => {
@@ -43,53 +44,13 @@ function App() {
       })
   }
 
-  // useEffect(() => {
-  //   fetch('/api/places')
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         res.json()
-  //           .then(setPlaces)
-  //         console.log(res)
-  //       } else {
-  //         res.json()
-  //           .then(data => setErrors(data.error))
-  //         console.log(res)
-  //       }
-  //     })
-  // }, [])
-
-  // const fetchAuthorizedUser = () => {
-  //   fetch('/api/authorized_user')
-  //     .then((res) => {
-  //       if(res.ok){
-  //         res.json()
-  //           .then((user) => {
-  //             updateUser(user)
-  //           })
-  //       }
-  //     })
-  // }
-
+  // STATE HANDLER FOR USER V. GUEST
   const updateUser = (currentUser) => setCurrentUser(currentUser)
 
+  // HANDLER FUNCTION TO POST NEW PLACE
   const addPlace = (newPlace) => setPlaces(places => [...places, newPlace])
 
-  //   const handleNewContent = (newContent) => {
-  //     setContents((contents) => [...contents, newContent])
-  // }
-
-  // const updatePlace = (updatedPlace) => setPlaces(current => {
-  //   return current.map(place => {
-  //     if(place.id === updatedPlace.id){
-  //       return updatedPlace
-  //     } else {
-  //       return place
-  //     }
-  //   })
-  // })
-
-  // const deletePlace = (id) => setPlaces(current => current.filter(place => place.id !== id))
-
+  // ERRORS CATCH 
   if (errors) return <h1>{errors}</h1>
 
   return (

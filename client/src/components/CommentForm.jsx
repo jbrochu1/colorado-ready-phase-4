@@ -1,33 +1,20 @@
 import { useState } from "react"
 
-export default function CommentForm({ place, currentUser, handleNewContent, updateUser }) {
+export default function CommentForm({ place, currentUser, handleNewContent }) {
   const [errors, setErrors] = useState(false)
   const [formData, setFormData] = useState({
     comment: '',
     rating: '',
   })
 
+  // HANDLER FUNCTION SETS STATE FOR FORM DATA BASED ON INPUT
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
 
-  const fetchAuthorizedUser = () => {
-    fetch('/api/authorized_user')
-      .then((res) => {
-        if (res.ok) {
-          res.json()
-            .then((currentUser) => {
-              updateUser(currentUser)
-            })
-        }
-      })
-  }
-
-  function onSubmit(e) {
-    // e.preventDefault();
-    fetchAuthorizedUser();
-
+  // PERSISTS FORM DATA TO DB OR RENDERS AN ERROR MESSAGE
+  function onSubmit() {
     fetch('/api/contents', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -40,7 +27,6 @@ export default function CommentForm({ place, currentUser, handleNewContent, upda
             .then((newContent) => { handleNewContent(newContent) })
         }
         else {
-          //Display errors
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
         }
 
@@ -49,7 +35,6 @@ export default function CommentForm({ place, currentUser, handleNewContent, upda
 
   return (
     <div>
-      {errors ? errors.map(e => <div>{e}</div>) : null}
       {currentUser ?
         <form onSubmit={onSubmit}>
           <label>Comment </label>
