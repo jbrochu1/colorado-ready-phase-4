@@ -55,8 +55,8 @@ export default function AddPlacePage({ addPlace, updateUser, currentUser }) {
           { errors ? errors.map(e => <div>{e}</div>) : null}
           <form onSubmit={onSubmit}>
             <div>
-            <label>Name </label>
-            <input type='text' name='name' value={formData.name} onChange={handleChange}  />
+            <label className=''>Name </label>
+            <input type='text' name='name' value={formData.name} onChange={handleChange} className='' />
             </div>
             <div>
             <label> Address</label>
