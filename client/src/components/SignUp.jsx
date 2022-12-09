@@ -57,9 +57,12 @@ function SignUp({ updateUser }) {
 
     return (
         <>
-        <div className=' p-3 flex flex-col justify-center items-center'>
-        <h2>New User Sign Up</h2>
-            <form onSubmit={onSubmit} className='p-3 justify-center items-center'>
+        <div>
+            <p className='text-2xl p-3'>New User Sign Up</p>
+        </div>
+        <div className=' p-2 flex md:flex md:items-center mb-6'>
+        
+            <form onSubmit={onSubmit} className='justify-center items-center'>
                 <div className='p-2'>
                 <label>
                     Username
