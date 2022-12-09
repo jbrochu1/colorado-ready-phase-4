@@ -25,7 +25,7 @@ export default function CommentForm({ place, currentUser, handleNewContent, upda
   }
 
   function onSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     fetchAuthorizedUser();
 
     fetch('/api/contents', {
@@ -50,16 +50,16 @@ export default function CommentForm({ place, currentUser, handleNewContent, upda
   return (
     <div>
       {errors ? errors.map(e => <div>{e}</div>) : null}
-      {currentUser ? 
-      <form onSubmit={onSubmit}>
-        <label>Comment </label>
-        <input type='text' name='comment' value={formData.comment} onChange={handleChange} />
+      {currentUser ?
+        <form onSubmit={onSubmit}>
+          <label>Comment </label>
+          <input type='text' name='comment' value={formData.comment} onChange={handleChange} />
 
-        <label> Rating</label>
-        <input type='dropdown' name='rating' value={formData.rating} onChange={handleChange} />
+          <label> Rating</label>
+          <input type='dropdown' name='rating' value={formData.rating} onChange={handleChange} />
 
-        <input type='submit' value='Create' />
-      </form> : null }
+          <input type='submit' value='Create' />
+        </form> : null}
       {errors ? errors.map(e => <h2 style={{ color: 'red' }}>{e.toUpperCase()}</h2>) : null}
     </div>
   )

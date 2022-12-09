@@ -20,6 +20,7 @@ function ContentCard({ content, onDeleteContent, onEditContent, currentUser }) {
             method: 'DELETE',
         })
         onDeleteContent()
+        window.location.reload();
     }
 
     return (

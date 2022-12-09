@@ -6,6 +6,7 @@ function ContentEditForm({ onEditContent, contentID }) {
 
 
     const handleEdit = () => {
+        e.preventDefault()
         fetch(`/api/contents/${contentID}`, {
             method: "PATCH",
             headers: {

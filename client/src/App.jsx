@@ -16,44 +16,47 @@ function App() {
   const [contents, setContents] = useState([])
 
   // USE TO CHECK FOR USER LOGIN
-  // useEffect(() => {
-  //   fetch('/api/authorized_user')
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         res.json()
-  //           .then((user) => {
-  //             updateUser(user);
-  //             fetchPlaces() // <-- fetch request for particular data
-  //           });
-  //       } 
-  //     })
-  // }, [])
+  useEffect(() => {
+    fetch('/api/authorized_user')
+      .then((res) => {
+        if (res.ok) {
+          res.json()
+            .then((user) => {
+              updateUser(user);
+              fetchPlaces();
+            });
+        } else {
+          updateUser(false)
+          fetchPlaces();
+        }
+      })
+  }, [])
 
-  // const fetchPlaces = () => {
+  const fetchPlaces = () => {
+    fetch('/api/places')
+      .then((res) => {
+        if (res.ok) {
+          res.json().then(setPlaces)
+        } else {
+          res.json().then(data => setErrors(data.error))
+        }
+      })
+  }
+
+  // useEffect(() => {
   //   fetch('/api/places')
   //     .then((res) => {
   //       if (res.ok) {
-  //         res.json().then(setPlaces)
+  //         res.json()
+  //           .then(setPlaces)
+  //         console.log(res)
   //       } else {
-  //         res.json().then(data => setErrors(data.error))
+  //         res.json()
+  //           .then(data => setErrors(data.error))
+  //         console.log(res)
   //       }
   //     })
-  // }
-
-  useEffect(() => {
-    fetch('/api/places')
-    .then((res) => {
-      if (res.ok) {
-        res.json()
-        .then(setPlaces)
-        console.log(res)
-      } else {
-        res.json()
-        .then(data => setErrors(data.error))
-        console.log(res)
-      }
-    })
-  }, [])
+  // }, [])
 
   // const fetchAuthorizedUser = () => {
   //   fetch('/api/authorized_user')
@@ -71,9 +74,9 @@ function App() {
 
   const addPlace = (newPlace) => setPlaces(places => [...places, newPlace])
 
-//   const handleNewContent = (newContent) => {
-//     setContents((contents) => [...contents, newContent])
-// }
+  //   const handleNewContent = (newContent) => {
+  //     setContents((contents) => [...contents, newContent])
+  // }
 
   // const updatePlace = (updatedPlace) => setPlaces(current => {
   //   return current.map(place => {
@@ -91,14 +94,14 @@ function App() {
 
   return (
     <Router>
-      <NavBar updateUser={updateUser} currentUser={currentUser}/>
+      <NavBar updateUser={updateUser} currentUser={currentUser} />
       <Routes>
-        <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser}/>} />
+        <Route path='/' element={<Home places={places} updateUser={updateUser} currentUser={currentUser} />} />
         <Route path='/login' element={<LogIn updateUser={updateUser} />} />
         <Route path='/sign_up' element={<SignUp updateUser={updateUser} />} />
         <Route path='/place/new' element={<AddPlacePage addPlace={addPlace} updateUser={updateUser} currentUser={currentUser} />} />
-        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} />}/>
-        <Route path='/profile' element={<UserPage currentUser={currentUser}/>}/>
+        <Route path='/places/:id' element={<PlaceDetails updateUser={updateUser} currentUser={currentUser} />} />
+        <Route path='/profile' element={<UserPage currentUser={currentUser} />} />
       </Routes>
     </Router>
   )

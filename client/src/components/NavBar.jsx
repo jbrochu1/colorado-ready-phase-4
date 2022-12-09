@@ -6,14 +6,14 @@ function NavBar({ updateUser, currentUser }) {
         fetch('/api/logout', {
             method: 'DELETE'
         })
-        .then(res => {
-            if(res.ok){
-                updateUser(false)
-            }
-        })
+            .then(res => {
+                if (res.ok) {
+                    updateUser(false)
+                }
+            })
     }
 
-    return(
+    return (
         <nav>
             <button><Link to='/'>Home</Link></button>
             {currentUser ? <button><Link to='/place/new'>Add Place</Link></button> : null}

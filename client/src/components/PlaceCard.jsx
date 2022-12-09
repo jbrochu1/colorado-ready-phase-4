@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 // import PlaceMap from './PlaceMap'
 
 function PlaceCard({ place, updateUser, currentUser }) {
-    const {id, name, address, category, image, hours, elevation, kid_friendly} = place
+    const { id, name, address, category, image, hours, elevation, kid_friendly } = place
 
-    return(
+    return (
         <div>
             <div>
                 <h3>{name}</h3>
-                <img src={image} alt="Rendering Error"/>
+                <img src={image} alt="Rendering Error" />
                 <p>{category}</p>
                 <p>{address}</p>
                 <p>{hours}</p>
