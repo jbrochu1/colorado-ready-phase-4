@@ -22,7 +22,7 @@ function NavBar({ updateUser, currentUser }) {
                 {currentUser ? <button className="btn btn-ghost normal-case text-xl"><Link to='/place/new'>Add Place</Link></button> : null}
             </div>
             
-                {currentUser ? (<button className="btn btn-ghost normal-case text-xl"><Link to='/profile'>Edit Profile</Link></button>) : (<button className="btn btn-ghost normal-case text-xl navbar-center"><Link to='/sign_up'>Sign Up</Link></button>)}
+                {currentUser ? (<button className="btn btn-ghost normal-case text-xl"><Link to='/profile'>View Profile</Link></button>) : (<button className="btn btn-ghost normal-case text-xl navbar-center"><Link to='/sign_up'>Sign Up</Link></button>)}
             
             
             {currentUser ? <button className="btn btn-ghost normal-case text-xl" onClick={handleLogOut}>Log Out</button> : <button className="btn btn-ghost normal-case text-xl"><Link to='/login'>Log In</Link></button>}
