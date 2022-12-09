@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LogIn from './components/LogIn'
 import './App.css'
 import Home from './components/Home'
@@ -13,7 +13,6 @@ function App() {
   const [places, setPlaces] = useState([])
   const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState(false)
-  // const [contents, setContents] = useState([])
 
   // CHECK FOR USER LOGIN
   useEffect(() => {
