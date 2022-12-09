@@ -57,6 +57,7 @@ function App() {
   if (errors) return <h1>{errors}</h1>
 
   return (
+    <div>
     <Router>
       <NavBar updateUser={updateUser} currentUser={currentUser} />
       <Routes>
@@ -68,6 +69,7 @@ function App() {
         <Route path='/profile' element={<UserPage currentUser={currentUser} />} />
       </Routes>
     </Router>
+    </div>
   )
 }
 

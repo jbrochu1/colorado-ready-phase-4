@@ -11,30 +11,30 @@ function PlaceCard({ place, updateUser, currentUser }) {
             <div>
                 <h3>{name}</h3>
                 <img src={image} alt="Rendering Error" />
-                <p>{category}</p>
-                <p>{address}</p>
-                <p>{hours}</p>
-                <p>{elevation}</p>
+                <p>Category: {category}</p>
+                <p>Address: {address}</p>
+                <p>Operating Hours: {hours}</p>
+                <p>Elevation: {elevation}</p>
                 {/* <PlaceMap /> */}
                 {kid_friendly ? <p>Kids ok!</p> : <p>Adults only</p>}
                 <Link to={`/places/${id}`}><button> See More Details!</button></Link>
             </div>
-            <div>
+            {/* <div>
                 <div>
-                    {/* {place.contents.map(content => {
+                    {place.contents.map(content => {
                     return(
                         <div key={content.id}>
                                 <p>{content.comment}</p>
                                 <p>{content.rating}</p>
                         </div>
                     )
-                    })} */}
-                    {/* <ContentList place={place}/> */}
+                    })}
+                    <ContentList place={place}/>
                 </div>
                 <div>
-                    {/* <CommentForm place={place} updateUser={updateUser} currentUser={currentUser} /> */}
+                    <CommentForm place={place} updateUser={updateUser} currentUser={currentUser} />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

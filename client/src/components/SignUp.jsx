@@ -57,42 +57,62 @@ function SignUp({ updateUser }) {
 
     return (
         <>
+        <div className=' p-3 flex flex-col justify-center items-center'>
         <h2>New User Sign Up</h2>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className='p-3 justify-center items-center'>
+                <div className='p-2'>
                 <label>
                     Username
                 </label>
                 <input type='text' name='username' value={username} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     Email
                 </label>
                 <input type='text' name='email' value={email} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     Password
                 </label>
                 <input type='password' name='password' placeholder="Password..." value={password} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     First Name
                 </label>
                 <input type='text' name='first_name' value={first_name} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     Last Name
                 </label>
                 <input type='text' name='last_name' value={last_name} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     Location (State)
                 </label>
                 <input type='text' name='location' value={location} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     Age
                 </label>
                 <input type='text' name='age' value={age} onChange={handleChange} />
+                </div>
+                <div className='p-2'>
                 <label>
                     Avatar Image
                 </label>
                 <input type='text' name='avatar_img' value={avatar_img} onChange={handleChange} />
-                <input type='submit' value='Sign Up'/>
+                </div>
+                <div className='p-2'>
+                <input type='submit' value='Sign Up' className='p-3 shadow bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none text-white font-bold rounded'/>
+                </div>
             </form>
+            </div>
             { errors ? errors.map(err => <div>{ (err[0]) + ': ' + (err[1]) }</div>) : null }
 
         </>
