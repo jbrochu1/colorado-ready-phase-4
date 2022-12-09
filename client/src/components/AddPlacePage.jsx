@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function AddPlacePage({ place, updateUser, currentUser }) {
   const [formData, setFormData] = useState({
@@ -11,7 +11,7 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
     // kid_friendly: true,
     user_id: ''
   })
-  const [kidFriendly, setKidFriendly] = useState(true)
+  const [kidFriendly, setKidFriendly] = useState(false)
   const [errors, setErrors] = useState([])
 
   const handleChange = (e) => {
@@ -19,22 +19,18 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
     setFormData({ ...formData, [name]: value })
   }
 
-  const handleKidFriendly = () => {
-    setKidFriendly(!kidFriendly)
+  const handleKidFriendly = (e) => {
+    setKidFriendly(toBool(e.target.value))
   }
 
-  // const toBool = (value) => {
-  //   if (value && typeof value === "string") {
-  //     if (value.toLowerCase() === "true") return true;
-  //     if (value.toLowerCase() === "false") return false;
-  //   }
-  //   return value;
-  // }
-
-  // const strToBool = (e) => {
-  //   const { kid_friendly, value } = Boolean(e.target)
-  //   setFormData({...formData, [kid_friendly]: value})
-  // }
+  const toBool = (value) => {
+    if (value && typeof value === "string") {
+      if (value.toLowerCase() === "true") return true;
+      if (value.toLowerCase() === "false") return false;
+    }
+    console.log(value)
+    return value;
+  }
 
   function onSubmit(e) {
     // e.preventDefault()
@@ -98,12 +94,12 @@ export default function AddPlacePage({ place, updateUser, currentUser }) {
         </div>
         <div>
           <label>Kid Friendly</label>
-            <select type='select' name='kid friendly' value={formData.kid_friendly} onChange={handleChange} >
-              <option value={kidFriendly}>Yes</option>
-              <option value={!kidFriendly}>No</option>
+            <select type='select' name='kid friendly' value={kidFriendly} onChange={handleKidFriendly} >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
             </select>
           {/* <label>Kid Friendly</label>
-          <input type='checkbox' name='kid_friendly' value={kidFriendly} onCheck={handleKidFriendly} checked/> */}
+          <input type='checkbox' name='kid_friendly' value={kidFriendly} onChange={handleKidFriendly} /> */}
         </div>
         <div>
           <input type='submit' value='Create' />

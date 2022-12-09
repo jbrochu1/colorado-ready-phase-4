@@ -1,27 +1,42 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+// import { useParams } from 'react-router-dom'
 
 
-function UserPage() {
-    const [user, setUser] = useState()
+function UserPage({ currentUser }) {
+    // const [user, setUser] = useState()
     // const [errors, setErrors] = useState([])
+    const {
+        first_name,
+        last_name,
+        email,
+        location,
+        age,
+        username,
+        avatar_img,
+        places,
+        contents
+    } = currentUser
 
-    const params = useParams
-    const { user_id } = params
+    // // const params = useParams
+    // // const { user_id } = params
 
     useEffect(() => {
-        fetch(`/users/${user_id}`)
-            .then((r) => r.json())
-            .then(user => setUser(user))
+        console.log(currentUser)
+        console.log(places)
     }, [])
 
 
     return (
         <div>
-            <h1>{user.name}</h1>
+            <h1>{username}</h1>
+            <img src={avatar_img} width="300" alt="No Image Uploaded (ಠ_ಠ)"/>
+            <p>{first_name} {last_name}, {location}</p>
+            <p>{email}</p>
+            <p>{age}</p>
+            
             <h3>My Places</h3>
             <ul>
-                {user.places.map(place => (
+                {places.map(place => (
                     <li>
                         <h2>{place.name}</h2>
                         <img src={place.image} alt="Render error" />
@@ -30,7 +45,7 @@ function UserPage() {
                 ))}
             </ul>
             <h3>My Comments</h3>
-                    {user.contents.map(content => {
+                    {contents.map(content => {
                         <li>
                             <h2>{content.place.name}</h2>
                             <p>"{content.comment}" - {content.rating} / 5</p>
